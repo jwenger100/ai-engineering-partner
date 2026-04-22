@@ -1,0 +1,297 @@
+/* ── Hero ──────────────────────────────────── */
+.hero {
+  background: linear-gradient(135deg, #060a1f 0%, #0d1433 45%, #091020 100%);
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 5rem 1.5rem 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 50% 40%,
+    rgba(37, 99, 235, 0.13) 0%,
+    transparent 65%
+  );
+  pointer-events: none;
+}
+
+.heroInner {
+  position: relative;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.heroEyebrow {
+  display: inline-block;
+  color: #2563eb;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+
+.heroH1 {
+  font-family: Georgia, serif;
+  font-size: clamp(2rem, 5.5vw, 3.5rem);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.25rem;
+}
+
+.heroSubheadline {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: #b8d0f0;
+  line-height: 1.7;
+  margin-bottom: 0.75rem;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.heroSupporting {
+  font-size: 0.9rem;
+  color: #7a9ac0;
+  margin-bottom: 2.5rem;
+  font-style: italic;
+}
+
+.heroActions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* ── Section base ──────────────────────────── */
+.section {
+  padding: 5rem 1.5rem;
+}
+
+.sectionAlt {
+  padding: 5rem 1.5rem;
+  background-color: #f8f9fa;
+}
+
+.sectionDark {
+  padding: 5rem 1.5rem;
+  background: linear-gradient(135deg, #060a1f 0%, #091020 60%, #0d1433 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.sectionDark::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(37, 99, 235, 0.1) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.sectionInner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.sectionLabel {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #2563eb;
+  margin-bottom: 0.75rem;
+}
+
+.sectionLabelLight {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #3b82f6;
+  margin-bottom: 0.75rem;
+}
+
+.sectionH2 {
+  font-family: Georgia, serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.25rem);
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.25;
+  margin-bottom: 1rem;
+}
+
+.sectionH2Light {
+  font-family: Georgia, serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.25rem);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.25;
+  margin-bottom: 1rem;
+}
+
+.sectionBody {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.75;
+  max-width: 680px;
+}
+
+.sectionBodyLight {
+  font-size: 1rem;
+  color: #b0c4e8;
+  line-height: 1.75;
+  max-width: 680px;
+}
+
+/* ── Credibility / stats ───────────────────── */
+.credibilityGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.credStat {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  background: rgba(37, 99, 235, 0.06);
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  border-radius: 10px;
+}
+
+.credNumber {
+  font-family: Georgia, serif;
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #2563eb;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.credLabel {
+  font-size: 0.875rem;
+  color: #555;
+  line-height: 1.4;
+}
+
+/* ── Service cards grid ────────────────────── */
+.serviceGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+/* ── ROI callout ───────────────────────────── */
+.roiGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.roiCard {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  background: rgba(37, 99, 235, 0.08);
+  border: 1px solid rgba(37, 99, 235, 0.25);
+  border-radius: 10px;
+}
+
+.roiNumber {
+  font-family: Georgia, serif;
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #2563eb;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.roiLabel {
+  font-size: 0.875rem;
+  color: #555;
+  line-height: 1.4;
+}
+
+/* ── Outcomes bullets ──────────────────────── */
+.outcomesGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 2.5rem;
+  align-items: start;
+}
+
+.outcomesBullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.outcomesBullet {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.9rem;
+  color: #444;
+}
+
+.outcomesCheck {
+  color: #2563eb;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* ── Process steps grid ────────────────────── */
+.processGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+
+/* ── Responsive ────────────────────────────── */
+@media (max-width: 62em) {
+  .credibilityGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .outcomesGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 48em) {
+  .credibilityGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .serviceGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .roiGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .processGrid {
+    grid-template-columns: 1fr;
+  }
+}

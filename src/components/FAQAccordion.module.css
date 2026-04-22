@@ -1,0 +1,46 @@
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.item {
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  background-color: #ffffff;
+  overflow: hidden;
+  transition: border-color 0.2s ease;
+}
+
+.itemOpen {
+  border-color: #2563eb;
+}
+
+.control {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #1a1a1a;
+  gap: 1rem;
+  transition: background-color 0.2s ease;
+  font-family: inherit;
+}
+
+.control:hover {
+  background-color: #f8f9fa;
+}
+
+.body {
+  padding: 0 1.5rem 1.25rem;
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.7;
+}

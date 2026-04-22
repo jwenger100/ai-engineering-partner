@@ -1,0 +1,22 @@
+@import "@mantine/core/styles.css";
+
+:root {
+  --primary: #2563eb;
+  --accent: #3b82f6;
+  --hero-dark: #060a1f;
+  --hero-dark-mid: #0d1433;
+  --section-bg-alt: #f8f9fa;
+  --text-dark: #1a1a1a;
+  --text-muted: #6c757d;
+  --border-light: #e9ecef;
+  --card-border-radius: 8px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--text-dark);
+}
