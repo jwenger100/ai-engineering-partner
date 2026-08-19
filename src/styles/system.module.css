@@ -1,0 +1,209 @@
+/*
+ * Shared layout and type primitives.
+ *
+ * Imported by pages rather than duplicated per page — the previous structure
+ * had the same dark-header block and section-intro pattern written inline on
+ * six different pages, which is how they drifted apart.
+ */
+
+/* ── Structure ────────────────────────────────────────── */
+
+.shell {
+  max-width: var(--shell);
+  margin: 0 auto;
+  padding: 0 1.75rem;
+}
+
+.shellNarrow {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 1.75rem;
+}
+
+.band { padding: 5.5rem 0; }
+.bandTight { padding: 4rem 0; }
+.bandSunken { background: var(--sunken); border-block: 1px solid var(--rule); }
+.bandSurface { background: var(--surface); border-block: 1px solid var(--rule); }
+
+/* ── Type ─────────────────────────────────────────────── */
+
+.eyebrow {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 1.1rem;
+}
+
+.h1 {
+  font-size: clamp(2.3rem, 5.2vw, 3.75rem);
+  font-weight: 600;
+  line-height: 1.03;
+  letter-spacing: -0.035em;
+  color: var(--ink);
+  margin: 0 0 1.35rem;
+}
+
+.h2 {
+  font-size: clamp(1.65rem, 3.4vw, 2.3rem);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin: 0 0 1rem;
+}
+
+.h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin: 0 0 0.4rem;
+}
+
+.lede {
+  font-size: clamp(1.05rem, 1.9vw, 1.22rem);
+  line-height: 1.6;
+  color: var(--ink-soft);
+  margin: 0 0 1.1rem;
+  max-width: 54ch;
+}
+
+.body {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--ink-soft);
+  margin: 0 0 1.1rem;
+  max-width: 62ch;
+}
+
+.fine {
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: var(--muted);
+  margin: 0;
+  max-width: 62ch;
+}
+
+.link { color: var(--accent); font-weight: 500; text-decoration: none; }
+.link:hover { text-decoration: underline; }
+
+/* ── Buttons ──────────────────────────────────────────── */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 0 1.6rem;
+  border-radius: 8px;
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.btnPrimary { background: var(--accent); color: #ffffff; }
+.btnPrimary:hover { background: var(--accent-deep); color: #ffffff; }
+
+.btnGhost { background: transparent; color: var(--ink); border-color: var(--rule-firm); }
+.btnGhost:hover { border-color: var(--ink); color: var(--ink); }
+
+.btnSm { min-height: 44px; padding: 0 1.15rem; font-size: 0.92rem; }
+
+.actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 2rem; }
+
+/* ── Numbered rows (replaces the old card grids) ──────── */
+
+.rows { display: flex; flex-direction: column; margin-top: 2.5rem; }
+
+.row {
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  gap: 1.5rem;
+  padding: 1.6rem 0;
+  border-top: 1px solid var(--rule);
+}
+
+.row:last-child { border-bottom: 1px solid var(--rule); }
+
+.rowNum {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--accent);
+  padding-top: 0.28rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.rowBody {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  margin: 0;
+  max-width: 68ch;
+}
+
+/* ── Plain grid of items, no card chrome ──────────────── */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem 2.5rem;
+  margin-top: 2.5rem;
+}
+
+.gridItem { max-width: 46ch; }
+
+/* ── Surfaces ─────────────────────────────────────────── */
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  padding: 1.9rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.note {
+  padding: 1.15rem 1.4rem;
+  background: var(--accent-wash);
+  border: 1px solid var(--accent-line);
+  border-radius: 10px;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  margin: 1.5rem 0 0;
+}
+
+.note strong { color: var(--ink); }
+
+/* Ticked list, used wherever an inventory of inclusions appears. */
+.ticks { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.65rem; }
+
+.tickItem {
+  display: flex;
+  gap: 0.65rem;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+
+.tick { color: var(--accent); flex: none; font-size: 0.8rem; padding-top: 0.2rem; }
+
+/* ── Responsive ───────────────────────────────────────── */
+
+@media (max-width: 48em) {
+  .shell, .shellNarrow { padding: 0 1.25rem; }
+  .band { padding: 3.5rem 0; }
+  .bandTight { padding: 2.75rem 0; }
+  .row { grid-template-columns: 2.25rem 1fr; gap: 1rem; }
+  .grid { gap: 1.75rem; }
+  .actions > .btn { width: 100%; }
+  .panel { padding: 1.4rem; }
+}

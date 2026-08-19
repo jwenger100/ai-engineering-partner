@@ -78,21 +78,21 @@ export function SchedulingEmbed({ minHeight = 700 }: { minHeight?: number }) {
     return (
       <div
         style={{
-          background: "#fff",
-          border: "1px dashed #c4d0de",
+          background: "var(--surface)",
+          border: "1px dashed var(--rule-firm)",
           borderRadius: 12,
           padding: "3rem 1.5rem",
           textAlign: "center",
         }}
       >
-        <div style={{ fontFamily: "Georgia, serif", fontSize: "1.1rem", fontWeight: 700, marginBottom: "0.5rem" }}>
+        <div style={{ fontFamily: "var(--font-display), system-ui, sans-serif", fontSize: "1.1rem", fontWeight: 700, marginBottom: "0.5rem" }}>
           Scheduling is not connected yet.
         </div>
-        <p style={{ fontSize: "0.9rem", color: "#5c6b7f", lineHeight: 1.6, maxWidth: 440, margin: "0 auto 1rem" }}>
+        <p style={{ fontSize: "0.9rem", color: "var(--muted)", lineHeight: 1.6, maxWidth: 440, margin: "0 auto 1rem" }}>
           Add your booking link in <code>src/config/site.ts</code> to activate this. In the
           meantime, email works:
         </p>
-        <a href={`mailto:${site.email}`} style={{ color: "#2563eb", fontWeight: 600 }}>
+        <a href={`mailto:${site.email}`} style={{ color: "var(--accent)", fontWeight: 600 }}>
           {site.email}
         </a>
       </div>

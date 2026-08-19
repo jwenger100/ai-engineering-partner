@@ -23,7 +23,7 @@ function ChevronIcon({ open }: { open: boolean }) {
         transform: open ? "rotate(180deg)" : "rotate(0deg)",
         transition: "transform 0.2s ease",
         flexShrink: 0,
-        color: "#2563eb",
+        color: "var(--accent)",
       }}
     >
       <path

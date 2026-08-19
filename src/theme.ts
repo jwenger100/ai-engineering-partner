@@ -1,47 +1,40 @@
 import { createTheme, MantineColorsTuple } from "@mantine/core";
 
-const brandBlue: MantineColorsTuple = [
-  "#eff6ff",
-  "#dbeafe",
-  "#bfdbfe",
-  "#93c5fd",
-  "#60a5fa",
-  "#3b82f6",
-  "#2563eb",
-  "#1d4ed8",
-  "#1e40af",
-  "#1e3a8a",
+/*
+ * Mantine theme, aligned to the design tokens in globals.css.
+ *
+ * Mantine components (Button, TextInput, Select, Alert) are used across the
+ * forms, so their theme has to match the hand-rolled system or the site ends
+ * up with two visual languages fighting each other.
+ */
+
+const teal: MantineColorsTuple = [
+  "#f0fdfa",
+  "#ccfbf1",
+  "#99f6e4",
+  "#5eead4",
+  "#2dd4bf",
+  "#14b8a6",
+  "#0f766e", // primary — matches --accent
+  "#115e59",
+  "#134e4a",
+  "#042f2e",
 ];
 
 export const theme = createTheme({
-  colors: {
-    brand: brandBlue,
-  },
+  colors: { brand: teal },
   primaryColor: "brand",
-  fontFamily:
-    '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
+  primaryShade: 6,
+  fontFamily: "var(--font-body), system-ui, -apple-system, sans-serif",
+  fontFamilyMonospace: "var(--font-mono), ui-monospace, monospace",
   headings: {
-    fontFamily: 'Georgia, "Times New Roman", serif',
-    fontWeight: "700",
+    fontFamily: "var(--font-display), system-ui, sans-serif",
+    fontWeight: "600",
   },
   defaultRadius: "md",
-  spacing: {
-    xs: "0.5rem",
-    sm: "0.75rem",
-    md: "1rem",
-    lg: "1.25rem",
-    xl: "2rem",
-  },
+  spacing: { xs: "0.5rem", sm: "0.75rem", md: "1rem", lg: "1.25rem", xl: "2rem" },
   components: {
-    Button: {
-      defaultProps: {
-        size: "md",
-      },
-    },
-    Container: {
-      defaultProps: {
-        size: "lg",
-      },
-    },
+    Button: { defaultProps: { size: "md" } },
+    Container: { defaultProps: { size: "lg" } },
   },
 });

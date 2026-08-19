@@ -1,78 +1,37 @@
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
+.form { display: flex; flex-direction: column; gap: 1.25rem; }
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+.field { width: 100%; }
+.actions { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+.note { font-size: 0.85rem; color: var(--muted); margin: 0; }
 
-.row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.25rem;
-}
-
-.field {
-  width: 100%;
-}
-
-.actions {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-}
-
-.note {
-  font-size: 0.85rem;
-  color: #777;
-  margin: 0;
-}
-
-.success {
-  text-align: center;
-  padding: 3rem;
-}
+.success { padding: 2.5rem 0; }
 
 .successIcon {
-  width: 56px;
-  height: 56px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  background: rgba(37, 99, 235, 0.1);
-  border: 2px solid #2563eb;
+  background: var(--accent-wash);
+  border: 1px solid var(--accent-line);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
-  color: #2563eb;
-  font-weight: 700;
-  margin: 0 auto 1.25rem;
+  font-size: 1.25rem;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 1.25rem;
 }
 
 .successTitle {
-  font-family: Georgia, serif;
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #1a1a1a;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: var(--ink);
   margin: 0 0 0.5rem;
 }
 
-.successBody {
-  font-size: 0.9rem;
-  color: #555;
-  line-height: 1.65;
-  max-width: 400px;
-  margin: 0 auto;
-}
+.successBody { font-size: 0.95rem; color: var(--ink-soft); line-height: 1.7; max-width: 48ch; margin: 0; }
 
-@media (max-width: 48em) {
-  .row {
-    grid-template-columns: 1fr;
-  }
-}
-
-/*
- * Honeypot. Positioned off-canvas rather than display:none — some bots skip
- * fields that are display:none, but will happily fill a positioned one.
- */
 .honeypot {
   position: absolute !important;
   left: -9999px;
@@ -80,4 +39,8 @@
   height: 1px;
   opacity: 0;
   pointer-events: none;
+}
+
+@media (max-width: 48em) {
+  .row { grid-template-columns: 1fr; }
 }

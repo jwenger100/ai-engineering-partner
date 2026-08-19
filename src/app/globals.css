@@ -1,32 +1,78 @@
 @import "@mantine/core/styles.css";
 
+/*
+ * Design tokens.
+ *
+ * Light-ground, one accent, real typography. Replaces the previous scheme of
+ * dark navy gradients and Tailwind-default blue, which read as generic.
+ *
+ * Everything on the site derives from these — no page should introduce a raw
+ * hex value. Changing the accent here changes it everywhere.
+ */
 :root {
-  --primary: #2563eb;
-  --accent: #3b82f6;
-  --hero-dark: #060a1f;
-  --hero-dark-mid: #0d1433;
-  --section-bg-alt: #f8f9fa;
-  --text-dark: #1a1a1a;
-  --text-muted: #6c757d;
-  --border-light: #e9ecef;
-  --card-border-radius: 8px;
+  --ground:      #fafaf9;
+  --surface:     #ffffff;
+  --sunken:      #f5f5f4;
+  --ink:         #14201f;
+  --ink-soft:    #44403c;
+  --muted:       #78716c;
+  --rule:        #e7e5e4;
+  --rule-firm:   #d6d3d1;
+
+  --accent:      #0f766e;
+  --accent-deep: #115e59;
+  --accent-wash: #f0fdfa;
+  --accent-line: #99f6e4;
+
+  /* Semantic, kept separate from the accent so severity never reads as brand. */
+  --alarm:       #9a3412;
+  --alarm-wash:  #fff7ed;
+  --alarm-line:  #fed7aa;
+
+  --shell:       1080px;
+  --radius:      12px;
+
+  --shadow-sm:   0 1px 2px rgba(20, 32, 31, 0.04);
+  --shadow-lg:   0 1px 2px rgba(20, 32, 31, 0.04), 0 24px 48px -32px rgba(20, 32, 31, 0.22);
 }
 
-html {
-  scroll-behavior: smooth;
-}
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  color: var(--text-dark);
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--font-body), system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/*
- * Clearance for the fixed mobile CTA bar so it never covers footer content.
- * Matches the bar height in StickyCTA.module.css.
- */
-@media (max-width: 48em) {
-  body {
-    padding-bottom: calc(4.5rem + env(safe-area-inset-bottom, 0px));
+h1, h2, h3, h4 {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+a { color: var(--accent); }
+
+::selection { background: var(--accent-line); color: var(--ink); }
+
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
+}
+
+/* Clearance for the fixed mobile CTA bar. */
+@media (max-width: 48em) {
+  body { font-size: 16px; padding-bottom: calc(4.5rem + env(safe-area-inset-bottom, 0px)); }
 }

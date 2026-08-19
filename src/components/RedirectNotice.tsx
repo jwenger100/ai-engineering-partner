@@ -24,12 +24,12 @@ export function RedirectNotice({ to, label }: { to: string; label: string }) {
         textAlign: "center",
       }}
     >
-      <p style={{ fontSize: "0.95rem", color: "#6c757d", marginBottom: "1rem" }}>
+      <p style={{ fontSize: "0.95rem", color: "var(--muted)", marginBottom: "1rem" }}>
         This page has moved.
       </p>
       <Link
         href={to}
-        style={{ fontSize: "1.05rem", fontWeight: 600, color: "#2563eb", textDecoration: "none" }}
+        style={{ fontSize: "1.05rem", fontWeight: 600, color: "var(--accent)", textDecoration: "none" }}
       >
         Continue to {label} →
       </Link>

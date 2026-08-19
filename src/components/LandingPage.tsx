@@ -1,79 +1,62 @@
 import Link from "next/link";
-import { Button } from "@mantine/core";
 import { FAQAccordion } from "./FAQAccordion";
-import { PricingTierCard } from "./PricingTierCard";
 import { CaseStudies } from "./CaseStudies";
-import { CTASection } from "./CTASection";
+import { ScanPanel } from "./ScanPanel";
 import { TIERS } from "@/content/pricing";
 import { STEPS, DIFFERENTIATORS, FAQ_ITEMS, type LandingVariant } from "@/content/landing";
+import system from "@/styles/system.module.css";
 import classes from "./LandingPage.module.css";
 
 /*
  * One page engine, three heroes.
  *
  * The homepage and both ad landing pages share everything below the problem
- * section. Only the hero and problem copy vary, which is what keeps message
- * match with each ad without maintaining three sites.
+ * section — only the hero and problem copy vary. That keeps message match with
+ * each ad without maintaining three separate sites.
  */
 export function LandingPage({ variant }: { variant: LandingVariant }) {
   return (
     <>
-      {/* ── Hero ─────────────────────────────────────────── */}
-      <section className={classes.hero}>
-        <div className={classes.heroInner}>
-          <span className={classes.eyebrow}>{variant.eyebrow}</span>
-          <h1 className={classes.h1}>
-            {variant.headline.map((line, i) => (
-              <span key={i} className={classes.h1Line}>
-                {line}
-              </span>
-            ))}
-          </h1>
-          <p className={classes.subhead}>{variant.subhead}</p>
-          {variant.supporting && <p className={classes.supporting}>{variant.supporting}</p>}
-
-          <div className={classes.heroActions}>
-            <Button
-              component={Link}
-              href={variant.primaryCta.href}
-              variant="filled"
-              color="brand"
-              size="lg"
-              radius="md"
-            >
-              {variant.primaryCta.label}
-            </Button>
-            <Button
-              component={Link}
-              href={variant.secondaryCta.href}
-              variant="outline"
-              size="lg"
-              radius="md"
-              styles={{ root: { borderColor: "rgba(255,255,255,0.3)", color: "#d6e0f0" } }}
-            >
-              {variant.secondaryCta.label}
-            </Button>
+      {/* ── Hero ─────────────────────────────────────── */}
+      <section className={`${system.shell} ${classes.hero}`}>
+        <div className={classes.heroGrid}>
+          <div>
+            <p className={system.eyebrow}>{variant.eyebrow}</p>
+            <h1 className={system.h1}>{variant.headline.join(" ")}</h1>
+            <p className={system.lede}>{variant.subhead}</p>
+            <div className={system.actions}>
+              <Link
+                href={variant.primaryCta.href}
+                className={`${system.btn} ${system.btnPrimary}`}
+              >
+                {variant.primaryCta.label}
+              </Link>
+              <Link
+                href={variant.secondaryCta.href}
+                className={`${system.btn} ${system.btnGhost}`}
+              >
+                {variant.secondaryCta.label}
+              </Link>
+            </div>
+            {variant.supporting && <p className={classes.supporting}>{variant.supporting}</p>}
           </div>
+
+          {/* Stands in for a hero image: the finding, drawn to scale. */}
+          <ScanPanel />
         </div>
       </section>
 
-      {/* ── Problem ──────────────────────────────────────── */}
-      <section className={classes.sectionAlt}>
-        <div className={classes.inner}>
-          <div className={classes.label}>{variant.problem.label}</div>
-          <h2 className={classes.h2}>
-            {variant.problem.heading.map((line, i) => (
-              <span key={i} className={classes.h2Line}>
-                {line}
-              </span>
-            ))}
-          </h2>
-          <p className={classes.lead}>{variant.problem.intro}</p>
+      {/* ── Problem ──────────────────────────────────── */}
+      <section className={`${system.band} ${system.bandSunken}`}>
+        <div className={system.shell}>
+          <p className={system.eyebrow}>{variant.problem.label}</p>
+          <h2 className={system.h2}>{variant.problem.heading.join(" ")}</h2>
+          <p className={system.body}>{variant.problem.intro}</p>
 
           <ul className={classes.problemList}>
             {variant.problem.items.map((item) => (
               <li key={item} className={classes.problemItem}>
-                <span className={classes.problemIcon} aria-hidden="true">✕</span>
+                <span className={classes.problemMark} aria-hidden="true" />
                 <span>{item}</span>
               </li>
             ))}
@@ -81,157 +64,126 @@ export function LandingPage({ variant }: { variant: LandingVariant }) {
         </div>
       </section>
 
-      {/* ── Evidence ─────────────────────────────────────── */}
-      <section className={classes.sectionDark}>
-        <div className={classes.inner}>
-          <div className={classes.labelLight}>The evidence</div>
-          <h2 className={classes.h2Light}>
-            <span className={classes.h2Line}>This isn&apos;t a hunch.</span>
-            <span className={classes.h2Line}>Someone counted.</span>
-          </h2>
-          <p className={classes.leadLight}>
-            In June 2026, Symbiotic Security fully scanned 1,072 apps built on Lovable, Replit,
-            Bolt, v0 and similar tools. These are their published findings — a base rate for
-            apps like yours, not a claim about your app specifically.
-          </p>
-
-          <div className={classes.statGrid}>
-            <div className={classes.stat}>
-              <div className={classes.statFigure}>98%</div>
-              <div className={classes.statLabel}>had at least one security vulnerability</div>
-            </div>
-            <div className={`${classes.stat} ${classes.statCritical}`}>
-              <div className={classes.statFigure}>16%</div>
-              <div className={classes.statLabel}>had critical flaws</div>
-            </div>
-            <div className={classes.stat}>
-              <div className={classes.statFigure}>2%</div>
-              <div className={classes.statLabel}>were completely clean</div>
-            </div>
-          </div>
-
-          <p className={classes.footnote}>
-            172 of those apps allowed anyone to delete their data without logging in. A registered
-            vulnerability, CVE-2025-48757, describes 170+ apps leaking personal data, payment
-            details and API keys to unauthenticated strangers.
-          </p>
-
-          <div className={classes.darkCta}>
-            <Button component={Link} href="/risk-check" variant="filled" color="brand" size="md" radius="md">
-              See where your app stands
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* ── How it works ─────────────────────────────────── */}
-      <section className={classes.section} id="how-it-works">
-        <div className={classes.inner}>
-          <div className={classes.label}>How it works</div>
-          <h2 className={classes.h2}>
-            <span className={classes.h2Line}>Six steps, start to finish.</span>
-          </h2>
-          <p className={classes.lead}>
+      {/* ── How it works ─────────────────────────────── */}
+      <section className={system.band}>
+        <div className={system.shell}>
+          <p className={system.eyebrow}>How it works</p>
+          <h2 className={system.h2}>Six steps, start to finish.</h2>
+          <p className={system.body}>
             Typically two to four weeks, depending on what you built and how quickly you can
             answer questions.
           </p>
 
-          <ol className={classes.steps}>
+          <div className={system.rows}>
             {STEPS.map((step, i) => (
-              <li key={step.title} className={classes.step}>
-                <span className={classes.stepNum}>{i + 1}</span>
+              <div key={step.title} className={system.row}>
+                <span className={system.rowNum}>{String(i + 1).padStart(2, "0")}</span>
                 <div>
-                  <div className={classes.stepTitle}>{step.title}</div>
-                  <p className={classes.stepBody}>{step.body}</p>
+                  <h3 className={system.h3}>{step.title}</h3>
+                  <p className={system.rowBody}>{step.body}</p>
                 </div>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
-
-      {/* Renders nothing until real case studies are added. */}
-      <CaseStudies intro="Both came to us from an AI builder with a working product and no engineer." />
-
-      {/* ── Pricing ──────────────────────────────────────── */}
-      <section className={classes.sectionAlt} id="pricing">
-        <div className={classes.inner}>
-          <div className={classes.label}>Pricing</div>
-          <h2 className={classes.h2}>
-            <span className={classes.h2Line}>Start small. Decide after.</span>
-          </h2>
-          <p className={classes.lead}>
-            Fixed scope, fixed price, agreed before anything starts. The report comes off the
-            price of the work if you go ahead with it.
-          </p>
-
-          <div className={classes.tierGrid}>
-            {TIERS.map((tier) => (
-              <PricingTierCard
-                key={tier.name}
-                name={tier.name}
-                tagline={tier.tagline}
-                price={tier.price}
-                priceNote={tier.priceNote}
-                description={tier.description}
-                bulletPoints={tier.bullets}
-                ctaLabel={tier.ctaLabel}
-                ctaHref={tier.ctaHref}
-                featured={tier.featured}
-                badge={tier.badge}
-              />
-            ))}
-          </div>
-
-          <p className={classes.pricingNote}>
-            Bigger jobs — full AWS architecture, refactoring, fractional CTO —{" "}
-            <Link href="/pricing" className={classes.inlineLink}>
-              are on the pricing page
-            </Link>
-            .
-          </p>
-        </div>
-      </section>
-
-      {/* ── Why us ───────────────────────────────────────── */}
-      <section className={classes.section}>
-        <div className={classes.inner}>
-          <div className={classes.label}>Why us</div>
-          <h2 className={classes.h2}>
-            <span className={classes.h2Line}>Senior engineering,</span>
-            <span className={classes.h2Line}>without the agency overhead.</span>
-          </h2>
-
-          <div className={classes.diffGrid}>
-            {DIFFERENTIATORS.map((item) => (
-              <div key={item.title} className={classes.diff}>
-                <div className={classes.diffTitle}>{item.title}</div>
-                <p className={classes.diffBody}>{item.body}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── FAQ ──────────────────────────────────────────── */}
-      <section className={classes.sectionAlt}>
-        <div className={classes.inner}>
-          <div className={classes.label}>Questions</div>
-          <h2 className={classes.h2} style={{ marginBottom: "2rem" }}>
-            <span className={classes.h2Line}>The ones people actually ask.</span>
-          </h2>
-          <FAQAccordion items={FAQ_ITEMS} />
+      {/* Renders nothing until real case studies exist. */}
+      <CaseStudies intro="Both came to us from an AI builder with a working product and no engineer." />
+
+      {/* ── Pricing ──────────────────────────────────── */}
+      <section className={`${system.band} ${system.bandSunken}`} id="pricing">
+        <div className={system.shell}>
+          <p className={system.eyebrow}>Pricing</p>
+          <h2 className={system.h2}>Start small. Decide after.</h2>
+          <p className={system.body}>
+            Fixed scope and fixed price, agreed before anything starts. The report comes off the
+            cost of the work if you go ahead.
+          </p>
+
+          <div className={classes.tiers}>
+            {TIERS.map((tier) => (
+              <div
+                key={tier.name}
+                className={`${classes.tier} ${tier.featured ? classes.tierLead : ""}`}
+              >
+                <div className={classes.tierName}>{tier.name}</div>
+                <div className={classes.tierTag}>{tier.tagline}</div>
+                <div className={classes.tierPrice}>{tier.price}</div>
+                <div className={classes.tierNote}>{tier.priceNote}</div>
+                <ul className={classes.tierList}>
+                  {tier.bullets.slice(0, 6).map((bullet) => (
+                    <li key={bullet} className={system.tickItem}>
+                      <span className={system.tick} aria-hidden="true">✓</span>
+                      <span>{bullet}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Link href={tier.ctaHref} className={classes.tierBtn}>
+                  {tier.ctaLabel}
+                </Link>
+              </div>
+            ))}
+          </div>
+
+          <p className={system.note}>
+            <strong>If we find nothing, you don&apos;t pay.</strong> Some apps are in better shape
+            than their owners fear. If the review turns up nothing worth acting on, we say so and
+            refund the $750.{" "}
+            <Link href="/pricing" className={system.link}>
+              Full pricing
+            </Link>
+            .
+          </p>
         </div>
       </section>
 
-      <CTASection
-        headline="Find out what you're actually running."
-        body="A free 15-minute call with the engineer who'd do the work. If you don't need us yet, we'll say so — that happens more often than you'd think."
-        primaryLabel="Book a free call"
-        primaryHref="/book"
-        secondaryLabel="Check my app first"
-        secondaryHref="/risk-check"
-      />
+      {/* ── Why us ───────────────────────────────────── */}
+      <section className={system.band}>
+        <div className={system.shell}>
+          <p className={system.eyebrow}>Why us</p>
+          <h2 className={system.h2}>Senior engineering, without the agency overhead.</h2>
+
+          <div className={system.grid}>
+            {DIFFERENTIATORS.map((item) => (
+              <div key={item.title} className={system.gridItem}>
+                <h3 className={system.h3}>{item.title}</h3>
+                <p className={system.rowBody}>{item.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── FAQ ──────────────────────────────────────── */}
+      <section className={`${system.band} ${system.bandSunken}`}>
+        <div className={system.shell}>
+          <p className={system.eyebrow}>Questions</p>
+          <h2 className={system.h2}>The ones people actually ask.</h2>
+          <div style={{ marginTop: "2.25rem" }}>
+            <FAQAccordion items={FAQ_ITEMS} />
+          </div>
+        </div>
+      </section>
+
+      {/* ── Close ────────────────────────────────────── */}
+      <section className={system.bandTight}>
+        <div className={system.shell}>
+          <h2 className={system.h2}>Find out what you&apos;re actually running.</h2>
+          <p className={system.body}>
+            Fifteen minutes with the engineer who&apos;d do the work. If you don&apos;t need us
+            yet, we&apos;ll say so — that happens more often than you&apos;d think.
+          </p>
+          <div className={system.actions}>
+            <Link href="/book" className={`${system.btn} ${system.btnPrimary}`}>
+              Book a free call
+            </Link>
+            <Link href="/risk-check" className={`${system.btn} ${system.btnGhost}`}>
+              Check my app first
+            </Link>
+          </div>
+        </div>
+      </section>
     </>
   );
 }

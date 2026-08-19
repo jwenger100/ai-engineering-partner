@@ -1,11 +1,5 @@
-.bar {
-  display: none;
-}
+.bar { display: none; }
 
-/*
- * Mobile only. On desktop the sticky header CTA already covers this, and a
- * bottom bar there would just eat viewport.
- */
 @media (max-width: 48em) {
   .bar {
     position: fixed;
@@ -16,12 +10,11 @@
     display: flex;
     gap: 0.5rem;
     padding: 0.6rem 0.75rem;
-    /* env() keeps the bar clear of the iPhone home indicator. */
     padding-bottom: calc(0.6rem + env(safe-area-inset-bottom, 0px));
-    background: rgba(255, 255, 255, 0.94);
-    backdrop-filter: blur(8px);
-    border-top: 1px solid #e9ecef;
-    box-shadow: 0 -2px 16px rgba(6, 10, 31, 0.08);
+    background: rgba(250, 250, 249, 0.94);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid var(--rule);
+    box-shadow: 0 -2px 16px rgba(20, 32, 31, 0.06);
   }
 
   .action {
@@ -29,7 +22,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    /* 48px min target — comfortably above the 44px accessibility floor. */
     min-height: 48px;
     padding: 0 1rem;
     border-radius: 8px;
@@ -39,24 +31,8 @@
     transition: filter 0.15s ease;
   }
 
-  .action:active {
-    filter: brightness(0.94);
-  }
+  .action:active { filter: brightness(0.94); }
 
-  .action:focus-visible {
-    outline: 2px solid #1a1a1a;
-    outline-offset: 2px;
-  }
-
-  .primary {
-    flex: 1.6;
-    background: #2563eb;
-    color: #ffffff;
-  }
-
-  .secondary {
-    background: #ffffff;
-    color: #2563eb;
-    border: 1px solid #c7d7f0;
-  }
+  .primary { flex: 1.6; background: var(--accent); color: #ffffff; }
+  .secondary { background: var(--surface); color: var(--accent); border: 1px solid var(--rule-firm); }
 }

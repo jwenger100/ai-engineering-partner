@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Button } from "@mantine/core";
+import system from "@/styles/system.module.css";
 import classes from "./CTASection.module.css";
 
 interface CTASectionProps {
@@ -25,28 +25,13 @@ export function CTASection({
         <h2 className={classes.headline}>{headline}</h2>
         <p className={classes.body}>{body}</p>
         <div className={classes.actions}>
-          <Button
-            component={Link}
-            href={primaryHref}
-            variant="filled"
-            color="brand"
-            size="lg"
-            radius="md"
-          >
+          <Link href={primaryHref} className={`${system.btn} ${system.btnPrimary}`}>
             {primaryLabel}
-          </Button>
+          </Link>
           {secondaryLabel && secondaryHref && (
-            <Button
-              component={Link}
-              href={secondaryHref}
-              variant="outline"
-              color="gray"
-              size="lg"
-              radius="md"
-              styles={{ root: { borderColor: "rgba(255,255,255,0.3)", color: "#ccc" } }}
-            >
+            <Link href={secondaryHref} className={`${system.btn} ${system.btnGhost}`}>
               {secondaryLabel}
-            </Button>
+            </Link>
           )}
         </div>
       </div>
