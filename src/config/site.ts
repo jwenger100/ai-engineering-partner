@@ -53,8 +53,7 @@ export const scheduling = {
  * created it. Free tier: 250 submissions/month, honeypot + spam filtering.
  */
 export const web3forms = {
-  /** TODO: replace with your access key. */
-  accessKey: "YOUR_WEB3FORMS_ACCESS_KEY",
+  accessKey: "6353a276-c55b-4f10-8911-24636d5f94b3",
   endpoint: "https://api.web3forms.com/submit",
   get isConfigured() {
     return !this.accessKey.startsWith("YOUR_");
