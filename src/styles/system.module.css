@@ -207,3 +207,25 @@
   .actions > .btn { width: 100%; }
   .panel { padding: 1.4rem; }
 }
+
+/* ── Split section: heading rail left, content right ──────
+ * Used where a long list would otherwise run the full container width. Keeps
+ * the reading measure sane and gives wide screens something to do with the
+ * horizontal space besides stretching the text.
+ */
+.split {
+  display: grid;
+  grid-template-columns: minmax(220px, 300px) 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.splitRail { position: sticky; top: 104px; }
+
+.splitRail .eyebrow { margin-bottom: 1rem; }
+.splitRail p { margin: 0.9rem 0 0; font-size: 0.93rem; line-height: 1.7; color: var(--muted); }
+
+@media (max-width: 62em) {
+  .split { grid-template-columns: 1fr; gap: 2rem; }
+  .splitRail { position: static; }
+}

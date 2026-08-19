@@ -157,12 +157,16 @@ export function LandingPage({ variant }: { variant: LandingVariant }) {
 
       {/* ── FAQ ──────────────────────────────────────── */}
       <section className={`${system.band} ${system.bandSunken}`}>
-        <div className={system.shell}>
-          <p className={system.eyebrow}>Questions</p>
-          <h2 className={system.h2}>The ones people actually ask.</h2>
-          <div style={{ marginTop: "2.25rem" }}>
-            <FAQAccordion items={FAQ_ITEMS} />
+        <div className={`${system.shell} ${system.split}`}>
+          <div className={system.splitRail}>
+            <p className={system.eyebrow}>Questions</p>
+            <h2 className={system.h2}>The ones people actually ask.</h2>
+            <p>
+              Something not covered here? Ask on the call — we would rather answer it than have
+              you guess.
+            </p>
           </div>
+          <FAQAccordion items={FAQ_ITEMS} />
         </div>
       </section>
 

@@ -7,6 +7,7 @@ import { FAQAccordion } from "@/components/FAQAccordion";
 import { CTASection } from "@/components/CTASection";
 import { TIERS, ADD_ONS } from "@/content/pricing";
 import { FAQ_ITEMS } from "@/content/landing";
+import system from "@/styles/system.module.css";
 import classes from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -88,13 +89,13 @@ export default function PricingPage() {
       </section>
 
       <section className={classes.section}>
-        <Container size="md">
-          <div className={classes.label}>Questions</div>
-          <h2 className={classes.h2} style={{ marginBottom: "2rem" }}>
-            Before you ask us
-          </h2>
+        <div className={`${system.shell} ${system.split}`}>
+          <div className={system.splitRail}>
+            <p className={system.eyebrow}>Questions</p>
+            <h2 className={system.h2}>Before you ask us</h2>
+          </div>
           <FAQAccordion items={FAQ_ITEMS} />
-        </Container>
+        </div>
       </section>
 
       <CTASection
