@@ -88,10 +88,16 @@ export const leadSheet = {
  *
  * The env vars still take precedence, which is what you would use to point a
  * staging build at a separate property later.
+ *
+ * NOTE THE `||`, NOT `??`. GitHub Actions substitutes an EMPTY STRING for an
+ * unset `vars.*` reference, so the env var arrives as "" rather than
+ * undefined. `??` only falls back on null/undefined and would therefore keep
+ * the empty string, silently shipping a build with no analytics at all. This
+ * exact bug shipped once already.
  */
 export const analytics = {
-  ga4Id: process.env.NEXT_PUBLIC_GA4_ID ?? "G-QYLV3Q6GTH",
+  ga4Id: process.env.NEXT_PUBLIC_GA4_ID || "G-QYLV3Q6GTH",
 
   /** TODO: Meta Pixel ID from Events Manager (15-16 digits). */
-  metaPixelId: process.env.NEXT_PUBLIC_META_PIXEL_ID ?? "",
+  metaPixelId: process.env.NEXT_PUBLIC_META_PIXEL_ID || "",
 } as const;
