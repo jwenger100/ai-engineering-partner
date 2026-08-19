@@ -79,13 +79,19 @@ export const leadSheet = {
 } as const;
 
 /*
- * ANALYTICS — set as NEXT_PUBLIC_* env vars. Absent = script not injected,
- * so local dev stays clean and no broken tags ship.
+ * ANALYTICS
  *
- * For GitHub Actions, add these as repository variables and expose them in
- * the workflow's build step env block.
+ * These IDs are public by design — anyone can read them out of the page
+ * source, on any site that uses them. They are not secrets, so they live here
+ * as literals rather than as repository variables. That means a fresh clone
+ * builds with working analytics and there is no setup step to forget.
+ *
+ * The env vars still take precedence, which is what you would use to point a
+ * staging build at a separate property later.
  */
 export const analytics = {
-  ga4Id: process.env.NEXT_PUBLIC_GA4_ID ?? "",
+  ga4Id: process.env.NEXT_PUBLIC_GA4_ID ?? "G-QYLV3Q6GTH",
+
+  /** TODO: Meta Pixel ID from Events Manager (15-16 digits). */
   metaPixelId: process.env.NEXT_PUBLIC_META_PIXEL_ID ?? "",
 } as const;
