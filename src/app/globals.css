@@ -20,3 +20,13 @@ body {
   margin: 0;
   color: var(--text-dark);
 }
+
+/*
+ * Clearance for the fixed mobile CTA bar so it never covers footer content.
+ * Matches the bar height in StickyCTA.module.css.
+ */
+@media (max-width: 48em) {
+  body {
+    padding-bottom: calc(4.5rem + env(safe-area-inset-bottom, 0px));
+  }
+}

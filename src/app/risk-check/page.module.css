@@ -1,0 +1,66 @@
+.header {
+  position: relative;
+  overflow: hidden;
+  padding: 4rem 1.5rem 3rem;
+  background: linear-gradient(135deg, #060a1f 0%, #0d1433 60%, #091020 100%);
+}
+
+.header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(37, 99, 235, 0.16) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.headerInner {
+  position: relative;
+  text-align: center;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #7ba3e8;
+  margin-bottom: 1rem;
+}
+
+.h1 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.9rem, 5.5vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.12;
+  color: #ffffff;
+  margin: 0 0 1rem;
+  text-wrap: balance;
+}
+
+.sub {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #b0c4e8;
+  margin: 0 auto;
+  max-width: 52ch;
+}
+
+.body {
+  background: #f8f9fa;
+  padding: 3rem 1.5rem 5rem;
+}
+
+.disclaimer {
+  margin: 2rem auto 0;
+  max-width: 60ch;
+  font-size: 0.8rem;
+  line-height: 1.65;
+  color: #868e96;
+  text-align: center;
+}
+
+@media (max-width: 48em) {
+  .header { padding: 3rem 1.25rem 2.5rem; }
+  .body { padding: 2rem 1.25rem 4rem; }
+}

@@ -14,7 +14,7 @@ interface CTASectionProps {
 export function CTASection({
   headline,
   body,
-  primaryLabel = "Book a Discovery Call",
+  primaryLabel = "Book a free call",
   primaryHref = "/book",
   secondaryLabel,
   secondaryHref,

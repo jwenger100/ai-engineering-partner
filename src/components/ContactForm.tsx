@@ -1,128 +1,146 @@
 "use client";
 
 import { useState } from "react";
-import { TextInput, Select, Textarea, Button } from "@mantine/core";
+import Link from "next/link";
+import { TextInput, Select, Textarea, Button, Alert } from "@mantine/core";
+import { submitLead } from "@/lib/leads";
+import { track } from "@/lib/tracking";
+import { site } from "@/config/site";
 import classes from "./ContactForm.module.css";
 
 /*
- * FORM SUBMISSION — STATIC EXPORT NOTE
+ * Deliberately four fields.
  *
- * This site uses `output: "export"` which disables API routes.
- * The current implementation opens a mailto: link on submit.
- *
- * To wire up a real form backend:
- *
- * Option A — Formspree (https://formspree.io):
- *   Replace the handleSubmit body with:
- *   await fetch("https://formspree.io/f/YOUR_FORM_ID", {
- *     method: "POST",
- *     headers: { "Content-Type": "application/json" },
- *     body: JSON.stringify(formData),
- *   });
- *
- * Option B — Netlify Forms:
- *   Add `data-netlify="true"` to the <form> element and a hidden
- *   input with name="form-name" value="contact".
+ * Every field is friction, and this form exists for people who want to say
+ * something without booking a call. Qualification happens inside the Calendly
+ * booking flow instead — after the visitor has already committed, where it
+ * costs nothing. Asking it here would cost us the submission.
  */
 
-interface FormData {
-  name: string;
-  email: string;
-  company: string;
-  teamSize: string;
-  message: string;
-}
+const PLATFORMS = [
+  { value: "Lovable", label: "Lovable" },
+  { value: "Replit", label: "Replit" },
+  { value: "Bolt", label: "Bolt" },
+  { value: "v0", label: "v0" },
+  { value: "Other", label: "Something else" },
+  { value: "Not sure", label: "Not sure" },
+];
 
 export function ContactForm() {
-  const [form, setForm] = useState<FormData>({
-    name: "",
-    email: "",
-    company: "",
-    teamSize: "",
-    message: "",
-  });
-  const [submitted, setSubmitted] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [platform, setPlatform] = useState<string | null>(null);
+  const [message, setMessage] = useState("");
+  const [botcheck, setBotcheck] = useState("");
 
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    const subject = encodeURIComponent(
-      `AI Engineering Partner Inquiry — ${form.company || form.name}`
-    );
-    const body = encodeURIComponent(
-      `Name: ${form.name}\nEmail: ${form.email}\nCompany: ${form.company}\nTeam Size: ${form.teamSize}\n\nWhat help do you need?\n${form.message}`
-    );
-    window.location.href = `mailto:aiengineeringpartner1@gmail.com?subject=${subject}&body=${body}`;
-    setSubmitted(true);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
+  const [error, setError] = useState<string | null>(null);
+
+  async function handleSubmit(event: React.FormEvent) {
+    event.preventDefault();
+    setStatus("sending");
+    setError(null);
+
+    const result = await submitLead({
+      source: "contact",
+      name,
+      email,
+      platform: platform ?? "",
+      message,
+      botcheck,
+    });
+
+    if (result.ok) {
+      track("contact_form_submitted", { platform: platform ?? "unspecified" });
+      setStatus("sent");
+    } else {
+      setError(result.error);
+      setStatus("idle");
+    }
   }
 
-  if (submitted) {
+  if (status === "sent") {
     return (
       <div className={classes.success}>
         <div className={classes.successIcon}>✓</div>
-        <h3 className={classes.successTitle}>Opening your email client…</h3>
+        <h3 className={classes.successTitle}>Got it — thanks.</h3>
         <p className={classes.successBody}>
-          Your email client should open with your message pre-filled. Send it to reach us
-          at aiengineeringpartner1@gmail.com.
+          We read everything that comes in and reply within one business day. If it&apos;s
+          urgent, book a time directly and skip the wait.
         </p>
+        <div style={{ marginTop: "1.5rem" }}>
+          <Button component={Link} href="/book" variant="filled" color="brand" radius="md">
+            Book a call instead
+          </Button>
+        </div>
       </div>
     );
   }
 
   return (
     <form className={classes.form} onSubmit={handleSubmit}>
+      {error && (
+        <Alert color="red" variant="light" radius="md">
+          {error}{" "}
+          <a href={`mailto:${site.email}`} style={{ fontWeight: 600 }}>
+            {site.email}
+          </a>
+        </Alert>
+      )}
+
       <div className={classes.row}>
         <TextInput
           label="Name"
           placeholder="Your name"
           required
-          value={form.name}
-          onChange={(e) => setForm({ ...form, name: e.currentTarget.value })}
+          autoComplete="name"
+          value={name}
+          onChange={(e) => setName(e.currentTarget.value)}
           classNames={{ root: classes.field }}
         />
         <TextInput
-          label="Work Email"
-          placeholder="you@company.com"
+          label="Email"
+          placeholder="you@example.com"
           type="email"
           required
-          value={form.email}
-          onChange={(e) => setForm({ ...form, email: e.currentTarget.value })}
+          autoComplete="email"
+          value={email}
+          onChange={(e) => setEmail(e.currentTarget.value)}
           classNames={{ root: classes.field }}
         />
       </div>
-      <div className={classes.row}>
-        <TextInput
-          label="Company"
-          placeholder="Company name"
-          required
-          value={form.company}
-          onChange={(e) => setForm({ ...form, company: e.currentTarget.value })}
-          classNames={{ root: classes.field }}
-        />
-        <Select
-          label="Team Size"
-          placeholder="Select team size"
-          required
-          data={[
-            { value: "1-10", label: "1–10 engineers" },
-            { value: "11-50", label: "11–50 engineers" },
-            { value: "51-200", label: "51–200 engineers" },
-            { value: "201-500", label: "201–500 engineers" },
-            { value: "500+", label: "500+ engineers" },
-          ]}
-          value={form.teamSize}
-          onChange={(v) => setForm({ ...form, teamSize: v ?? "" })}
-          classNames={{ root: classes.field }}
-        />
-      </div>
-      <Textarea
-        label="What help do you need?"
-        placeholder="Tell us about your team, your current AI usage, and what you're hoping to achieve."
-        required
-        minRows={5}
-        value={form.message}
-        onChange={(e) => setForm({ ...form, message: e.currentTarget.value })}
+
+      <Select
+        label="What did you build it with?"
+        placeholder="Pick one"
+        data={PLATFORMS}
+        value={platform}
+        onChange={setPlatform}
         classNames={{ root: classes.field }}
       />
+
+      <Textarea
+        label="What's going on?"
+        placeholder="A sentence or two is plenty. What's the app, and what's the problem?"
+        required
+        minRows={4}
+        value={message}
+        onChange={(e) => setMessage(e.currentTarget.value)}
+        classNames={{ root: classes.field }}
+      />
+
+      {/* Honeypot — hidden from people, irresistible to bots. */}
+      <input
+        type="checkbox"
+        name="botcheck"
+        className={classes.honeypot}
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        checked={Boolean(botcheck)}
+        onChange={(e) => setBotcheck(e.currentTarget.checked ? "1" : "")}
+      />
+
       <div className={classes.actions}>
         <Button
           type="submit"
@@ -130,12 +148,11 @@ export function ContactForm() {
           color="brand"
           size="lg"
           radius="md"
+          loading={status === "sending"}
         >
-          Send Message
+          Send message
         </Button>
-        <p className={classes.note}>
-          We respond within one business day.
-        </p>
+        <p className={classes.note}>We reply within one business day.</p>
       </div>
     </form>
   );

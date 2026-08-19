@@ -1,0 +1,54 @@
+.header {
+  position: relative;
+  overflow: hidden;
+  padding: 4.5rem 1.5rem 3.5rem;
+  background: linear-gradient(135deg, #060a1f 0%, #0d1433 60%, #091020 100%);
+}
+
+.header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(37, 99, 235, 0.16) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.inner {
+  position: relative;
+  max-width: 780px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #7ba3e8;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.9rem, 5.5vw, 2.9rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin: 0 0 1rem;
+  text-wrap: balance;
+}
+
+.intro {
+  font-size: 1.02rem;
+  line-height: 1.7;
+  color: #b0c4e8;
+  margin: 0 auto;
+  max-width: 58ch;
+}
+
+@media (max-width: 48em) {
+  .header { padding: 3.25rem 1.25rem 2.75rem; }
+}

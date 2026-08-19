@@ -1,0 +1,365 @@
+/* ── Shared section shells ────────────────────────────── */
+
+.section,
+.sectionAlt,
+.sectionDark {
+  padding: 5rem 1.5rem;
+}
+
+.section { background: #ffffff; }
+.sectionAlt { background: #f8f9fa; }
+
+.sectionDark {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #060a1f 0%, #0d1433 60%, #091020 100%);
+}
+
+.sectionDark::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(37, 99, 235, 0.14) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.inner {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ── Hero ─────────────────────────────────────────────── */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 6rem 1.5rem 5rem;
+  background: linear-gradient(135deg, #060a1f 0%, #0d1433 60%, #091020 100%);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(37, 99, 235, 0.18) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.heroInner {
+  position: relative;
+  max-width: 780px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #7ba3e8;
+  margin-bottom: 1.25rem;
+}
+
+.h1 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.1rem, 6vw, 3.4rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin: 0 0 1.35rem;
+  text-wrap: balance;
+}
+
+.h1Line,
+.h2Line {
+  display: block;
+}
+
+.subhead {
+  font-size: clamp(1.02rem, 2.2vw, 1.2rem);
+  line-height: 1.65;
+  color: #c3d3ec;
+  margin: 0 auto 1rem;
+  max-width: 60ch;
+}
+
+.supporting {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #8ba3c7;
+  margin: 0 auto 2rem;
+  max-width: 52ch;
+}
+
+.heroActions {
+  display: flex;
+  gap: 0.85rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ── Type ─────────────────────────────────────────────── */
+
+.label,
+.labelLight {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.label { color: #2563eb; }
+.labelLight { color: #7ba3e8; }
+
+.h2,
+.h2Light {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: 700;
+  line-height: 1.18;
+  letter-spacing: -0.015em;
+  margin: 0 0 1rem;
+  text-wrap: balance;
+}
+
+.h2 { color: #1a1a1a; }
+.h2Light { color: #ffffff; }
+
+.lead,
+.leadLight {
+  font-size: 1rem;
+  line-height: 1.75;
+  margin: 0 0 2.25rem;
+  max-width: 64ch;
+}
+
+.lead { color: #555; }
+.leadLight { color: #b0c4e8; }
+
+/* ── Problem list ─────────────────────────────────────── */
+
+.problemList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 0.85rem;
+}
+
+.problemItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1.1rem 1.25rem;
+  background: #ffffff;
+  border: 1px solid #e9ecef;
+  border-radius: 10px;
+  font-size: 0.94rem;
+  line-height: 1.6;
+  color: #333;
+}
+
+.problemIcon {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fdece3;
+  color: #c2410c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  margin-top: 0.1rem;
+}
+
+/* ── Evidence stats ───────────────────────────────────── */
+
+.statGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 1.75rem;
+}
+
+.stat {
+  padding: 1.75rem 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.statCritical {
+  background: rgba(194, 65, 12, 0.14);
+  border-color: rgba(240, 130, 90, 0.4);
+}
+
+.statFigure {
+  font-family: Georgia, serif;
+  font-size: clamp(2.2rem, 6vw, 2.9rem);
+  font-weight: 700;
+  line-height: 1;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.statCritical .statFigure { color: #ffb499; }
+
+.statLabel {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #b0c4e8;
+}
+
+.footnote {
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: #8ba3c7;
+  margin: 0 0 2rem;
+  max-width: 68ch;
+}
+
+.darkCta { display: flex; }
+
+/* ── Steps ────────────────────────────────────────────── */
+
+.steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem 2.5rem;
+  counter-reset: step;
+}
+
+.step {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.stepNum {
+  flex: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #eef4ff;
+  border: 1px solid #c7d7f0;
+  color: #2563eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.stepTitle {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #1a1a1a;
+  margin-bottom: 0.35rem;
+}
+
+.stepBody {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: #555;
+  margin: 0;
+}
+
+/* ── Pricing ──────────────────────────────────────────── */
+
+.tierGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+.pricingNote {
+  margin: 2rem 0 0;
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+.inlineLink {
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.inlineLink:hover { text-decoration: underline; }
+
+/* ── Differentiators ──────────────────────────────────── */
+
+.diffGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.diff {
+  position: relative;
+  padding: 1.5rem 1.5rem 1.5rem 2.25rem;
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 10px;
+}
+
+.diff::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 5px;
+  background: linear-gradient(180deg, #2563eb, #3b82f6);
+  border-radius: 10px 0 0 10px;
+}
+
+.diffTitle {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #1a1a1a;
+  margin-bottom: 0.45rem;
+}
+
+.diffBody {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: #555;
+  margin: 0;
+}
+
+/* ── Responsive ───────────────────────────────────────── */
+
+@media (max-width: 48em) {
+  .section,
+  .sectionAlt,
+  .sectionDark {
+    padding: 3.5rem 1.25rem;
+  }
+
+  .hero {
+    padding: 4rem 1.25rem 3.5rem;
+  }
+
+  .heroActions > * {
+    width: 100%;
+  }
+
+  .darkCta > * {
+    width: 100%;
+  }
+}

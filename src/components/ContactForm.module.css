@@ -68,3 +68,16 @@
     grid-template-columns: 1fr;
   }
 }
+
+/*
+ * Honeypot. Positioned off-canvas rather than display:none — some bots skip
+ * fields that are display:none, but will happily fill a positioned one.
+ */
+.honeypot {
+  position: absolute !important;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
