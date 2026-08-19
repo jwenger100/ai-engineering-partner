@@ -1,13 +1,18 @@
 /*
  * Lead submission.
  *
- * DELIVERY ORDER IS DELIBERATE:
- *   1. Web3Forms  — awaited. This is the one that must succeed; it emails you.
- *   2. Apps Script — fire-and-forget. Appends to the Google Sheet.
+ * THE TWO DESTINATIONS ARE INDEPENDENT, ON PURPOSE:
+ *   - Web3Forms   — awaited, emails you, and decides what the visitor sees.
+ *   - Apps Script — fired in parallel, appends to the Google Sheet.
  *
- * If the sheet is down, misconfigured, or slow, the lead is already emailed and
- * the visitor still sees success. If Web3Forms fails, the visitor is told and
- * given the mailto fallback so the lead is never silently dropped.
+ * They used to be sequential, with the sheet write gated behind a successful
+ * Web3Forms call. That meant an outage or block at Web3Forms lost the lead from
+ * the sheet as well — losing it in both places at once, when the sheet is
+ * meant to be the durable record. Firing them in parallel means either can
+ * fail without taking the other down.
+ *
+ * The visitor's success state still follows Web3Forms alone: if we cannot email
+ * you, we tell them and show the mailto fallback rather than claiming success.
  */
 
 import { web3forms, leadSheet, site } from "@/config/site";
@@ -34,6 +39,22 @@ export async function submitLead(payload: LeadPayload): Promise<LeadResult> {
   }
 
   const attribution = readAttribution();
+
+  /*
+   * Fired first and never awaited, so it is already in flight regardless of
+   * what Web3Forms does. text/plain with no custom headers keeps it a "simple"
+   * request, so the browser skips a CORS preflight Apps Script cannot answer.
+   */
+  if (leadSheet.isConfigured) {
+    void fetch(leadSheet.endpoint, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify({ ...flatten(payload), ...attribution }),
+    }).catch(() => {
+      /* best-effort by design; never surfaced to the visitor */
+    });
+  }
 
   if (!web3forms.isConfigured) {
     // Visitor-facing copy: never expose configuration state to a real person.
@@ -62,20 +83,6 @@ export async function submitLead(payload: LeadPayload): Promise<LeadResult> {
     }
   } catch {
     return { ok: false, error: "Network error. Please check your connection or email us directly." };
-  }
-
-  // Fire-and-forget: never awaited, never surfaced. text/plain keeps the
-  // request "simple" so the browser skips a CORS preflight that Apps Script
-  // cannot answer.
-  if (leadSheet.isConfigured) {
-    void fetch(leadSheet.endpoint, {
-      method: "POST",
-      mode: "no-cors",
-      headers: { "Content-Type": "text/plain;charset=utf-8" },
-      body: JSON.stringify({ ...flatten(payload), ...attribution }),
-    }).catch(() => {
-      /* sheet is best-effort by design */
-    });
   }
 
   return { ok: true };
