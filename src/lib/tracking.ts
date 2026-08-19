@@ -4,12 +4,26 @@
  * WHY ATTRIBUTION IS CAPTURED ON ARRIVAL
  * Ad traffic lands on a page with ?utm_source=…&fbclid=… but then navigates
  * before converting, and by the time they submit a form the query string is
- * long gone. So we snapshot it into sessionStorage the moment they arrive and
- * attach it to every submission afterwards. Without this you cannot tell which
- * ad produced a deal that closes six weeks later.
+ * long gone. So we snapshot it the moment they arrive and attach it to every
+ * submission afterwards. Without this you cannot tell which ad produced a deal
+ * that closes six weeks later.
+ *
+ * WHY localStorage AND NOT sessionStorage
+ * sessionStorage is per-tab and is destroyed when the tab closes. That loses
+ * attribution for anyone who clicks an ad, closes the tab, and comes back
+ * later to convert — which is most people considering a five-figure purchase.
+ * It also breaks when a link opens in a new tab. localStorage survives both,
+ * and TTL_MS bounds how long a click can be credited.
  */
 
 const STORAGE_KEY = "aiep_attribution";
+
+/*
+ * 30 days. Meta's default click window is 7 days and Google's is 30; a
+ * $7,500 decision is rarely made in one sitting, so we take the longer one.
+ * Beyond this the record expires and the next visit becomes first touch.
+ */
+const TTL_MS = 30 * 24 * 60 * 60 * 1000;
 
 const TRACKED_PARAMS = [
   "utm_source",
@@ -24,6 +38,8 @@ const TRACKED_PARAMS = [
 export type Attribution = Partial<Record<(typeof TRACKED_PARAMS)[number], string>> & {
   landingPath?: string;
   referrer?: string;
+  /** Epoch ms of capture, used to expire the record. Never sent onward. */
+  capturedAt?: number;
 };
 
 /** Snapshot attribution on first page view of the session. Safe to call repeatedly. */
@@ -46,13 +62,17 @@ export function captureAttribution(): void {
     const hasNewCampaign = Object.keys(incoming).length > 0;
     if (!hasNewCampaign && Object.keys(existing).length > 0) return;
 
-    const record: Attribution = hasNewCampaign
-      ? { ...incoming, landingPath: window.location.pathname, referrer: document.referrer || "direct" }
-      : { landingPath: window.location.pathname, referrer: document.referrer || "direct" };
+    const base = {
+      landingPath: window.location.pathname,
+      referrer: document.referrer || "direct",
+      capturedAt: Date.now(),
+    };
 
-    window.sessionStorage.setItem(STORAGE_KEY, JSON.stringify(record));
+    const record: Attribution = hasNewCampaign ? { ...incoming, ...base } : base;
+
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(record));
   } catch {
-    // sessionStorage can throw in private mode / blocked-cookie contexts.
+    // localStorage throws in private mode and when cookies are blocked.
     // Attribution is a nice-to-have; never let it break the page.
   }
 }
@@ -60,8 +80,17 @@ export function captureAttribution(): void {
 export function readAttribution(): Attribution {
   if (typeof window === "undefined") return {};
   try {
-    const raw = window.sessionStorage.getItem(STORAGE_KEY);
-    return raw ? (JSON.parse(raw) as Attribution) : {};
+    const raw = window.localStorage.getItem(STORAGE_KEY);
+    if (!raw) return {};
+
+    const record = JSON.parse(raw) as Attribution;
+
+    if (record.capturedAt && Date.now() - record.capturedAt > TTL_MS) {
+      window.localStorage.removeItem(STORAGE_KEY);
+      return {};
+    }
+
+    return record;
   } catch {
     return {};
   }
@@ -70,13 +99,15 @@ export function readAttribution(): Attribution {
 /** Append stored attribution to a URL — used to forward params into the Calendly iframe. */
 export function decorateUrl(url: string): string {
   const attribution = readAttribution();
-  const entries = Object.entries(attribution).filter(([key]) => key !== "referrer");
+  const entries = Object.entries(attribution).filter(
+    ([key]) => key !== "referrer" && key !== "capturedAt",
+  );
   if (entries.length === 0) return url;
 
   try {
     const parsed = new URL(url);
     for (const [key, value] of entries) {
-      if (value) parsed.searchParams.set(key, value);
+      if (typeof value === "string" && value) parsed.searchParams.set(key, value);
     }
     return parsed.toString();
   } catch {
