@@ -1,7 +1,7 @@
 .wrapper {
   background: var(--sunken);
   border-top: 1px solid var(--rule);
-  padding: 4.5rem 0;
+  padding: 3.5rem 0;
 }
 
 .inner { max-width: var(--shell); margin: 0 auto; padding: 0 1.75rem; }

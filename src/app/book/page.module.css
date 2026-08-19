@@ -1,5 +1,5 @@
 .calendarSection { padding: 3rem 0; }
-.expectSection { background: var(--sunken); border-block: 1px solid var(--rule); padding: 4.5rem 0; }
+.expectSection { background: var(--sunken); border-block: 1px solid var(--rule); padding: 3.5rem 0; }
 
 .label {
   font-family: var(--font-mono), monospace;
@@ -21,7 +21,7 @@
 .expectTitle { font-family: var(--font-display), system-ui, sans-serif; font-weight: 600; font-size: 1rem; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 0.35rem; }
 .expectBody { font-size: 0.92rem; line-height: 1.7; color: var(--ink-soft); margin: 0; }
 
-.reassure { padding: 4rem 0; }
+.reassure { padding: 3.25rem 0; }
 .reassureInner { }
 
 .reassureTitle { font-size: clamp(1.45rem, 3vw, 1.9rem); font-weight: 600; line-height: 1.15; color: var(--ink); margin: 0 0 0.9rem; max-width: 22ch; }

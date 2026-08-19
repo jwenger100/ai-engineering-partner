@@ -20,8 +20,8 @@
   padding: 0 1.75rem;
 }
 
-.band { padding: 5.5rem 0; }
-.bandTight { padding: 4rem 0; }
+.band { padding: 4rem 0; }
+.bandTight { padding: 3rem 0; }
 .bandSunken { background: var(--sunken); border-block: 1px solid var(--rule); }
 .bandSurface { background: var(--surface); border-block: 1px solid var(--rule); }
 
@@ -200,8 +200,8 @@
 
 @media (max-width: 48em) {
   .shell, .shellNarrow { padding: 0 1.25rem; }
-  .band { padding: 3.5rem 0; }
-  .bandTight { padding: 2.75rem 0; }
+  .band { padding: 2.75rem 0; }
+  .bandTight { padding: 2.25rem 0; }
   .row { grid-template-columns: 2.25rem 1fr; gap: 1rem; }
   .grid { gap: 1.75rem; }
   .actions > .btn { width: 100%; }

@@ -10,14 +10,16 @@
  * hex value. Changing the accent here changes it everywhere.
  */
 :root {
-  --ground:      #fafaf9;
+  /* Three clearly separated levels. The previous ground/sunken pair differed
+     by about 1.5% lightness, which read as no separation at all. */
+  --ground:      #fbfaf9;
   --surface:     #ffffff;
-  --sunken:      #f5f5f4;
+  --sunken:      #f0eeea;
   --ink:         #14201f;
   --ink-soft:    #44403c;
   --muted:       #78716c;
-  --rule:        #e7e5e4;
-  --rule-firm:   #d6d3d1;
+  --rule:        #e2ded7;
+  --rule-firm:   #cdc8bf;
 
   --accent:      #0f766e;
   --accent-deep: #115e59;

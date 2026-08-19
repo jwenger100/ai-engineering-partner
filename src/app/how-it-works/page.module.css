@@ -1,5 +1,5 @@
-.section { padding: 4.5rem 0; }
-.sectionAlt { background: var(--sunken); border-block: 1px solid var(--rule); padding: 4.5rem 0; }
+.section { padding: 3.5rem 0; }
+.sectionAlt { background: var(--sunken); border-block: 1px solid var(--rule); padding: 3.5rem 0; }
 
 .label {
   font-family: var(--font-mono), monospace;

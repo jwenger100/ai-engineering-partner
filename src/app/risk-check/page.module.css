@@ -1,4 +1,4 @@
-.header { padding: 4rem 0 3rem; border-bottom: 1px solid var(--rule); }
+.header { padding: 3.25rem 0 2.5rem; border-bottom: 1px solid var(--rule); }
 .headerInner { }
 
 .eyebrow {
@@ -15,7 +15,7 @@
 .h1 { font-size: clamp(2rem, 4.6vw, 2.9rem); font-weight: 600; line-height: 1.06; letter-spacing: -0.035em; color: var(--ink); margin: 0 0 1.1rem; max-width: 18ch; }
 .sub { font-size: clamp(1.02rem, 1.8vw, 1.18rem); line-height: 1.6; color: var(--ink-soft); margin: 0; max-width: 54ch; }
 
-.body { background: var(--sunken); border-bottom: 1px solid var(--rule); padding: 3rem 0 5rem; }
+.body { background: var(--sunken); border-bottom: 1px solid var(--rule); padding: 2.5rem 0 4rem; }
 
 .disclaimer { margin: 2rem auto 0; max-width: 62ch; font-size: 0.82rem; line-height: 1.65; color: var(--muted); }
 

@@ -1,5 +1,5 @@
-.section { padding: 4.5rem 0; }
-.sectionAlt { background: var(--sunken); border-block: 1px solid var(--rule); padding: 4.5rem 0; }
+.section { padding: 3.5rem 0; }
+.sectionAlt { background: var(--sunken); border-block: 1px solid var(--rule); padding: 3.5rem 0; }
 
 .tierGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.5rem; align-items: stretch; }
 

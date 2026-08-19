@@ -1,4 +1,4 @@
-.section { background: var(--surface); border-block: 1px solid var(--rule); padding: 5.5rem 0; }
+.section { background: var(--surface); border-block: 1px solid var(--rule); padding: 4rem 0; }
 .inner { max-width: var(--shell); margin: 0 auto; padding: 0 1.75rem; }
 
 .label {
