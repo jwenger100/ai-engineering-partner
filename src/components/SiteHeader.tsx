@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Button } from "@mantine/core";
 import { LogoMark } from "./LogoMark";
 import { track } from "@/lib/tracking";
@@ -14,11 +15,19 @@ const navLinks = [
   { label: "Contact", href: "/contact" },
 ];
 
+/* Pages rebuilt in the new light design system. Grows as the rollout continues. */
+const LIGHT_ROUTES = ["/is-my-app-safe"];
+
 export function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const isLight = LIGHT_ROUTES.includes(pathname);
 
   return (
-    <header className={classes.header} style={{ position: "relative" }}>
+    <header
+      className={`${classes.header} ${isLight ? classes.light : ""}`}
+      style={{ position: "relative" }}
+    >
       <div className={classes.inner}>
         <Link href="/" className={classes.logo}>
           <LogoMark />
@@ -38,9 +47,10 @@ export function SiteHeader() {
               component={Link}
               href="/book"
               variant="filled"
-              color="brand"
+              color={isLight ? undefined : "brand"}
               size="sm"
               radius="md"
+              styles={isLight ? { root: { backgroundColor: "#0f766e" } } : undefined}
               onClick={() => track("cta_click", { placement: "header", target: "book" })}
             >
               Book a call

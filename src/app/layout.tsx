@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Instrument_Sans, Public_Sans, IBM_Plex_Mono } from "next/font/google";
 import { ColorSchemeScript } from "@mantine/core";
 import { Providers } from "./providers";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -7,6 +8,32 @@ import { StickyCTA } from "@/components/StickyCTA";
 import { Analytics } from "@/components/Analytics";
 import { site } from "@/config/site";
 import "./globals.css";
+
+/*
+ * Loaded as CSS variables rather than applied globally, so only pages that
+ * opt in pick them up. Lets the redesign roll out page by page without
+ * changing the typography of pages that have not been redone yet.
+ */
+const displayFont = Instrument_Sans({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  variable: "--font-display",
+  display: "swap",
+});
+
+const bodyFont = Public_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-body",
+  display: "swap",
+});
+
+const monoFont = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-mono",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -37,7 +64,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${displayFont.variable} ${bodyFont.variable} ${monoFont.variable}`}>
       <head>
         <ColorSchemeScript />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
