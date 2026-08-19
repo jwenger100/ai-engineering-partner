@@ -71,10 +71,10 @@ export const web3forms = {
  * sheet fails, the lead is still emailed. A lead is never lost to this.
  */
 export const leadSheet = {
-  /** TODO: replace with your Apps Script Web App URL (ends in /exec). */
-  endpoint: "https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec",
+  endpoint:
+    "https://script.google.com/macros/s/AKfycbwHUeywiMWLzQmjStKQR8melQ8iooPbW_alzyRZ_J7YJGiyO98l2dYB3ZEc9YaK9GxScQ/exec",
   get isConfigured() {
-    return !this.endpoint.includes("YOUR_DEPLOYMENT_ID");
+    return this.endpoint.endsWith("/exec") && !this.endpoint.includes("YOUR_");
   },
 } as const;
 
