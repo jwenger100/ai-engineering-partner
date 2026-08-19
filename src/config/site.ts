@@ -98,6 +98,5 @@ export const leadSheet = {
 export const analytics = {
   ga4Id: process.env.NEXT_PUBLIC_GA4_ID || "G-QYLV3Q6GTH",
 
-  /** TODO: Meta Pixel ID from Events Manager (15-16 digits). */
-  metaPixelId: process.env.NEXT_PUBLIC_META_PIXEL_ID || "",
+  metaPixelId: process.env.NEXT_PUBLIC_META_PIXEL_ID || "1009176168770380",
 } as const;
