@@ -9,7 +9,7 @@ import classes from "./page.module.css";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "A one-engineer practice for founders who built a product with AI and now need it to hold up in production. Principal engineer, twenty years in the industry, formerly at Microsoft.",
+    "A one-engineer practice for founders who built a product with AI and now need it to hold up in production. Twenty years an engineer, principal level, formerly at Microsoft.",
   alternates: { canonical: "/about" },
 };
 
@@ -70,8 +70,8 @@ export default function AboutPage() {
               the tools, because it was never what they were built for.
             </p>
             <p>
-              I&apos;m Jonathan Wenger. I have been an engineer for more than twenty years, I work
-              at principal level, and part of that career was spent at Microsoft. That background
+              I&apos;m Jonathan Wenger. Twenty years an engineer, principal level, Microsoft among
+              the places I&apos;ve built. That background
               is why a founder can hand me production database credentials without wondering who
               they are dealing with, and why I would rather tell you your app is fine than sell you
               work you do not need.
