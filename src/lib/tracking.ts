@@ -11,7 +11,7 @@
  * WHY localStorage AND NOT sessionStorage
  * sessionStorage is per-tab and is destroyed when the tab closes. That loses
  * attribution for anyone who clicks an ad, closes the tab, and comes back
- * later to convert — which is most people considering a five-figure purchase.
+ * later to convert, which is most people considering a five-figure purchase.
  * It also breaks when a link opens in a new tab. localStorage survives both,
  * and TTL_MS bounds how long a click can be credited.
  */
@@ -96,7 +96,7 @@ export function readAttribution(): Attribution {
   }
 }
 
-/** Append stored attribution to a URL — used to forward params into the Calendly iframe. */
+/** Append stored attribution to a URL, used to forward params into the Calendly iframe. */
 export function decorateUrl(url: string): string {
   const attribution = readAttribution();
   const entries = Object.entries(attribution).filter(

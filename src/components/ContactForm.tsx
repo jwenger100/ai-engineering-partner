@@ -13,7 +13,7 @@ import classes from "./ContactForm.module.css";
  *
  * Every field is friction, and this form exists for people who want to say
  * something without booking a call. Qualification happens inside the Calendly
- * booking flow instead — after the visitor has already committed, where it
+ * booking flow instead, after the visitor has already committed, where it
  * costs nothing. Asking it here would cost us the submission.
  */
 
@@ -63,10 +63,10 @@ export function ContactForm() {
     return (
       <div className={classes.success}>
         <div className={classes.successIcon}>✓</div>
-        <h3 className={classes.successTitle}>Got it — thanks.</h3>
+        <h3 className={classes.successTitle}>Got it. Thank you.</h3>
         <p className={classes.successBody}>
-          We read everything that comes in and reply within one business day. If it&apos;s
-          urgent, book a time directly and skip the wait.
+          Everything that comes in gets read, and you&apos;ll have a reply inside one business
+          day. If it is urgent, book a time directly and skip the queue.
         </p>
         <div style={{ marginTop: "1.5rem" }}>
           <Button component={Link} href="/book" variant="filled" color="brand" radius="md">
@@ -129,7 +129,7 @@ export function ContactForm() {
         classNames={{ root: classes.field }}
       />
 
-      {/* Honeypot — hidden from people, irresistible to bots. */}
+      {/* Honeypot: hidden from people, irresistible to bots. */}
       <input
         type="checkbox"
         name="botcheck"
@@ -152,7 +152,7 @@ export function ContactForm() {
         >
           Send message
         </Button>
-        <p className={classes.note}>We reply within one business day.</p>
+        <p className={classes.note}>You&apos;ll have a reply inside one business day.</p>
       </div>
     </form>
   );

@@ -1,7 +1,7 @@
 /*
  * Shared layout and type primitives.
  *
- * Imported by pages rather than duplicated per page — the previous structure
+ * Imported by pages rather than duplicated per page. The previous structure
  * had the same dark-header block and section-intro pattern written inline on
  * six different pages, which is how they drifted apart.
  */

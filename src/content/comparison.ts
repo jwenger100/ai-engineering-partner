@@ -12,7 +12,7 @@ export const COMPARISON_ROWS = [
   {
     attribute: "Who controls it",
     lovable:
-      "The platform. Limited visibility into what runs where, and changing it means asking them.",
+      "The platform does. You get limited visibility into what runs where, and changing any of it means asking them.",
     github:
       "You do. Your GitHub, your Supabase project, your hosting account, your domain.",
     aws: "You do, described in code. Every resource versioned in Terraform and auditable.",
@@ -20,7 +20,7 @@ export const COMPARISON_ROWS = [
   {
     attribute: "Deploying a change",
     lovable:
-      "Click to deploy through the platform. Hard to reproduce locally, and hard to see why a failure happened.",
+      "Click to deploy through the platform. Reproducing a failure locally is hard, and working out why it happened is harder.",
     github:
       "Pull request, automated checks, staging, then production. Repeatable, and you can watch it happen.",
     aws: "Container images and blue/green releases. More machinery than most early products need.",
@@ -28,15 +28,15 @@ export const COMPARISON_ROWS = [
   {
     attribute: "Monthly cost",
     lovable:
-      "Plans start around $20–25/mo, but metered AI credits dominate the bill and vary hugely — heavy building runs into the hundreds.",
+      "Plans start around $20–25/mo, but metered AI credits dominate the bill and vary enormously from project to project. A month of heavy building looks nothing like a quiet one.",
     github:
       "Supabase Pro $25, hosting at cost, CI usually free. Commonly $50–150/mo, plus whatever AI tooling you choose.",
-    aws: "Higher floor — roughly $200–500/mo before traffic — but predictable and controllable as you grow.",
+    aws: "A higher floor, roughly $200–500/mo before traffic, but predictable and controllable as it grows with you.",
   },
   {
     attribute: "Testing before it's live",
     lovable:
-      "Often no separation at all. The same configuration serves your experiments and your customers.",
+      "Often no separation at all, which means the same configuration serves your experiments and your customers.",
     github:
       "Separate development, staging and production, each with their own secrets and their own data.",
     aws: "Separate accounts or networks per environment. The standard for regulated work.",
@@ -44,7 +44,7 @@ export const COMPARISON_ROWS = [
   {
     attribute: "Security",
     lovable:
-      "Depends entirely on platform defaults and whether anyone checked. Access rules are frequently never configured.",
+      "Rests entirely on platform defaults and on whether anybody thought to check them. Access rules are frequently never configured at all.",
     github:
       "Access rules written and tested, secrets stored properly, dependencies tracked. A materially stronger baseline.",
     aws: "Network segmentation, managed secrets, full audit logging. Necessary for enterprise buyers, overkill before that.",
@@ -60,7 +60,7 @@ export const COMPARISON_ROWS = [
   {
     attribute: "When this is right",
     lovable:
-      "Getting an idea to a working prototype. It is genuinely very good at this.",
+      "Getting an idea to a working prototype. Nothing else on this table gets you there faster.",
     github:
       "You have real users, or you're about to. This is where most founders should be.",
     aws: "Significant traffic, enterprise security requirements, or multi-region reliability. Rarely early.",

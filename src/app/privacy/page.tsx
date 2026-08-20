@@ -6,18 +6,18 @@ import classes from "./page.module.css";
 
 /*
  * ─────────────────────────────────────────────────────────────────────────
- * NOTE FOR JON — READ BEFORE RELYING ON THIS.
+ * NOTE FOR JON. READ BEFORE RELYING ON THIS.
  *
  * This is an accurate description of what this website actually does. Every
  * third party named below is one the site genuinely sends data to, and the
- * list was written from the code rather than from a template — which is more
+ * list was written from the code rather than from a template, which is more
  * than can be said for most privacy policies.
  *
  * It is NOT legal advice and I am not a lawyer. Two things in particular you
  * should get looked at by someone who is:
  *
  *  1. If you take clients in the EU/UK, GDPR brings obligations this page
- *     only gestures at — lawful basis, data processing agreements with each
+ *     only gestures at: lawful basis, data processing agreements with each
  *     processor, and a defined retention period.
  *  2. Once you start handling client production databases, you need a
  *     separate data processing agreement for THAT. This page covers the
@@ -78,7 +78,7 @@ export default function PrivacyPage() {
             <p>
               The five-question check runs entirely in your browser. Your answers are not sent
               anywhere unless you then choose to enter your email address to receive the written
-              version — at which point your answers and your email are sent to us.
+              version, at which point your answers and your email are sent to us.
             </p>
 
             <h3>Automatically</h3>
@@ -102,32 +102,32 @@ export default function PrivacyPage() {
             </p>
             <ul className={classes.vendors}>
               <li>
-                <strong>Web3Forms</strong> — delivers contact form submissions to our inbox.{" "}
+                <strong>Web3Forms</strong> delivers contact form submissions to our inbox.{" "}
                 <a href="https://web3forms.com/privacy-policy" target="_blank" rel="noopener noreferrer">
                   Their policy
                 </a>
               </li>
               <li>
-                <strong>Google</strong> — Sheets and Apps Script store enquiries so we can keep
-                track of them; Google Analytics measures site usage.{" "}
+                <strong>Google</strong>, where Sheets and Apps Script store enquiries so we can
+                keep track of them, and Google Analytics measures site usage.{" "}
                 <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">
                   Their policy
                 </a>
               </li>
               <li>
-                <strong>Cal.com</strong> — handles call bookings.{" "}
+                <strong>Cal.com</strong> handles call bookings.{" "}
                 <a href="https://cal.com/privacy" target="_blank" rel="noopener noreferrer">
                   Their policy
                 </a>
               </li>
               <li>
-                <strong>Meta</strong> — the Meta Pixel measures advertising performance.{" "}
+                <strong>Meta</strong>, whose pixel measures advertising performance.{" "}
                 <a href="https://www.facebook.com/privacy/policy" target="_blank" rel="noopener noreferrer">
                   Their policy
                 </a>
               </li>
               <li>
-                <strong>GitHub</strong> — hosts this website, and records server logs including
+                <strong>GitHub</strong> hosts this website, and records server logs including
                 IP addresses as part of serving it.{" "}
                 <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer">
                   Their policy
@@ -141,8 +141,8 @@ export default function PrivacyPage() {
 
             <h2>Why we are allowed to</h2>
             <p>
-              When you send us an enquiry or book a call, you are asking us to get in touch — we
-              use your details for that and for the follow-up conversation. For analytics and
+              When you send us an enquiry or book a call, you are asking us to get in touch, and
+              we use your details for that and for the follow-up conversation. For analytics and
               advertising measurement, we rely on our legitimate interest in understanding
               whether our marketing works, and you can opt out below.
             </p>

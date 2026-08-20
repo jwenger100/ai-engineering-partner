@@ -10,7 +10,7 @@ import { site } from "@/config/site";
 import classes from "./RiskCheck.module.css";
 
 /*
- * Five questions, one tap each, auto-advancing — five taps to a result on a
+ * Five questions, one tap each, auto-advancing: five taps to a result on a
  * phone with no scrolling and no submit button.
  *
  * The result is shown BEFORE the email ask. Gating the answer behind an email
@@ -103,8 +103,8 @@ export function RiskCheck() {
         <div className={classes.resultCta}>
           <h3 className={classes.resultCtaTitle}>Want to talk it through?</h3>
           <p className={classes.resultCtaBody}>
-            Fifteen minutes, free, with the engineer who&apos;d do the work. We&apos;ll tell you
-            honestly if you don&apos;t need us yet — that happens often.
+            Fifteen minutes, free, with the engineer who would do the work. If it turns out you
+            don&apos;t need me yet, that is what you&apos;ll hear.
           </p>
           <div className={classes.resultActions}>
             <Button
@@ -122,7 +122,7 @@ export function RiskCheck() {
 
           {status === "sent" ? (
             <Alert color="green" variant="light" radius="md" mt="lg">
-              Sent — check your inbox. We&apos;ll follow up within one business day.
+              Sent. Check your inbox, and I&apos;ll follow up inside one business day.
             </Alert>
           ) : (
             <form className={classes.emailForm} onSubmit={sendReport}>

@@ -2,42 +2,43 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@mantine/core";
 import { PageHeader } from "@/components/PageHeader";
+import { Credentials } from "@/components/Credentials";
 import { CTASection } from "@/components/CTASection";
 import classes from "./page.module.css";
 
 export const metadata: Metadata = {
   title: "About",
   description:
-    "A founder-led engineering practice for people who built a product with AI and now need it to hold up in production.",
+    "A one-engineer practice for founders who built a product with AI and now need it to hold up in production. Principal engineer, twenty years in the industry, formerly at Microsoft.",
   alternates: { canonical: "/about" },
 };
 
 const VALUES = [
   {
     title: "You talk to the engineer",
-    desc: "There is no account manager, no discovery team, and nobody who repeats your problem back to you before passing it along. The person on the call is the person doing the work.",
+    desc: "There is nobody standing between you and the work. Whoever is on the call is the same person who reads your code, writes the missing access rules and hands the finished thing back to you.",
   },
   {
-    title: "We say when you don't need us",
-    desc: "Plenty of apps are in better shape than their owners fear, and some problems are cheaper to solve elsewhere. Saying so costs us a sale and buys something more useful.",
+    title: "I say when you don't need me",
+    desc: "Plenty of apps are in better shape than their owners fear, and some problems are cheaper to solve somewhere that isn't here. Saying so costs me one sale and buys something I value a great deal more.",
   },
   {
     title: "Fixed scope, agreed first",
-    desc: "You know the price and what's included before anything starts. No open-ended hourly billing, and no discovery retainer that has to be paid before anyone will tell you anything.",
+    desc: "You know the price and what sits inside it before anything begins. There is no open-ended hourly billing and no discovery retainer to pay before anybody will tell you anything useful.",
   },
   {
-    title: "AI-built isn't a dirty word",
-    desc: "Using AI to get a working product was the right call. The tools are genuinely good at that part. What they don't do is the engineering that has to happen next.",
+    title: "AI-built is not a dirty word",
+    desc: "Using AI to reach a working product was the right call, and the tools are good at that part of the job. What they do not do is the engineering that has to happen next.",
   },
 ];
 
 const EXPERTISE = [
-  "Supabase and Postgres — access rules, schema design, migrations",
+  "Supabase and Postgres, including access rules, schema design and migrations",
   "Auth systems and session handling",
   "Secrets management and key rotation",
   "CI/CD with GitHub Actions",
   "Environment separation and release process",
-  "AWS, Terraform, containerised deployment",
+  "AWS, Terraform and containerised deployment",
   "Next.js and modern React codebases",
   "Claude Code and AI-assisted development workflows",
   "Security review of AI-generated code",
@@ -50,42 +51,52 @@ export default function AboutPage() {
       <PageHeader
         eyebrow="About"
         title="A small practice, on purpose"
-        intro="We help founders whose products were built with AI turn them into something that holds up under real users."
+        intro="I help founders whose products were built with AI turn them into something that holds up once real users arrive."
       />
 
       <section className={classes.section}>
         <Container size="md">
           <div className={classes.prose}>
             <p>
-              Something genuinely new happened in the last couple of years: people who don&apos;t
-              write code started shipping real software. Not mockups — working products, with
-              customers and revenue. The tools that made that possible are good, and getting
-              better.
+              Something new happened in the last couple of years. People who don&apos;t write code
+              started shipping real software, and not mockups either: working products with
+              customers, revenue and a support inbox. The tools that made that possible are good,
+              and they get better every quarter.
             </p>
             <p>
-              What those tools don&apos;t do is the unglamorous engineering that has to happen
-              afterwards. Nobody decides who&apos;s allowed to read the database. Nobody rotates
-              the keys. Nobody sets up a place to try a change before customers see it. None of
-              that is a criticism of the tools — it was never what they were for.
+              What those tools do not do is the unglamorous engineering that comes afterwards:
+              deciding who is allowed to read the database, rotating the keys, building somewhere
+              safe to try a change before customers ever see it. None of that is a criticism of
+              the tools, because it was never what they were built for.
             </p>
             <p>
-              That gap is the whole practice. We take products that already work and make them
-              safe to run: security gaps closed, infrastructure moved into accounts you own, and
-              — the part that actually matters — you left able to keep building it yourself.
+              I&apos;m Jonathan Wenger. I have been an engineer for more than twenty years, I work
+              at principal level, and part of that career was spent at Microsoft. That background
+              is why a founder can hand me production database credentials without wondering who
+              they are dealing with, and why I would rather tell you your app is fine than sell you
+              work you do not need.
             </p>
             <p>
-              We stay deliberately small. It means you get senior engineering attention rather
-              than whoever was available, and it means we turn down work that isn&apos;t a fit
-              instead of stretching to cover it.
+              The gap between a working prototype and a product that can survive its own customers
+              is the whole practice. I take apps that already work and make them safe to run: the
+              security holes closed, the infrastructure moved into accounts you own, and you left
+              able to keep building the thing yourself. That last part matters most, and it is the
+              easiest one to quietly skip.
             </p>
+            <p>
+              Staying small is a deliberate choice rather than a stage I am trying to grow out of.
+              It means you get senior attention rather than whoever happened to be free that week,
+              and it means I turn down work that isn&apos;t a fit instead of stretching to cover it.
+            </p>
+            <Credentials variant="block" />
           </div>
         </Container>
       </section>
 
       <section className={classes.sectionAlt}>
         <Container size="lg">
-          <div className={classes.label}>How we work</div>
-          <h2 className={classes.h2}>Four things you can hold us to</h2>
+          <div className={classes.label}>How I work</div>
+          <h2 className={classes.h2}>Four things you can hold me to</h2>
           <div className={classes.valueGrid}>
             {VALUES.map((value) => (
               <div key={value.title} className={classes.value}>
@@ -99,7 +110,7 @@ export default function AboutPage() {
 
       <section className={classes.section}>
         <Container size="lg">
-          <div className={classes.label}>What we actually do</div>
+          <div className={classes.label}>The work itself</div>
           <h2 className={classes.h2}>The work, specifically</h2>
           <ul className={classes.expertise}>
             {EXPERTISE.map((item) => (
@@ -110,9 +121,9 @@ export default function AboutPage() {
             ))}
           </ul>
           <p className={classes.note}>
-            We also still work with in-house engineering teams on AI adoption —{" "}
+            I also still work with in-house engineering teams on AI adoption, and{" "}
             <Link href="/engineering-teams" className={classes.inlineLink}>
-              that&apos;s here
+              that work lives here
             </Link>
             .
           </p>
@@ -120,8 +131,8 @@ export default function AboutPage() {
       </section>
 
       <CTASection
-        headline="Want to know where your app stands?"
-        body="Fifteen minutes, free, with the engineer who'd do the work. Worst case, you get a straight second opinion and we tell you to save your money."
+        headline="Find out where your app stands"
+        body="Fifteen minutes, free, with the engineer who would do the work. Worst case you walk away with a straight second opinion and instructions to keep your money."
         primaryLabel="Book a free call"
         primaryHref="/book"
         secondaryLabel="Check my app first"

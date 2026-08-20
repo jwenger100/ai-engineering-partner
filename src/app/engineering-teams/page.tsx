@@ -35,7 +35,7 @@ const SERVICES = [
   {
     name: "Custom internal tooling",
     format: "Scoped per project",
-    body: "The internal tools your team keeps saying someone should build — built, deployed, and documented well enough that they outlive us.",
+    body: "The internal tools your team keeps saying somebody should build, built this time, then deployed and documented well enough to outlive the engagement.",
     includes: [
       "Internal assistants over your own documentation and data",
       "Code generation fitted to your conventions",
@@ -46,9 +46,9 @@ const SERVICES = [
   {
     name: "Workflow automation",
     format: "Scoped per project",
-    body: "Finding the repeated manual work in your engineering process and removing it — review triage, release notes, test scaffolding, on-call routine.",
+    body: "Finding the repeated manual work in your engineering process and taking it away: review triage, release notes, test scaffolding, on-call routine.",
     includes: [
-      "An audit of where your team's hours actually go",
+      "An audit of where your team's hours are going",
       "Automation for the highest-frequency work first",
       "CI and review pipeline improvements",
       "Measurement, so you know whether it worked",
@@ -57,7 +57,7 @@ const SERVICES = [
   {
     name: "Ongoing support",
     format: "Monthly retainer",
-    body: "For teams that want an experienced pair of hands available as their AI practice matures, without hiring for it.",
+    body: "For teams that want an experienced pair of hands on call while their AI practice finds its feet, without hiring a head for it.",
     includes: [
       "Regular working sessions with your engineers",
       "Architecture and tooling guidance",
@@ -72,8 +72,8 @@ export default function EngineeringTeamsPage() {
     <>
       <PageHeader
         eyebrow="For engineering teams"
-        title="Help your engineers actually use AI well"
-        intro="Most of our work now is with founders whose apps were built by AI. This is the other half: teams that already have engineers, and want them to get real value out of these tools."
+        title="Help your engineers use AI properly"
+        intro="Most of my work now is with founders whose apps were built by AI. This is the other half of the practice: teams that already have engineers and want them getting real value out of these tools."
       />
 
       <section className={classes.section}>
@@ -97,10 +97,10 @@ export default function EngineeringTeamsPage() {
           </div>
 
           <div className={classes.cta}>
-            <h2 className={classes.ctaTitle}>Want to talk about your team?</h2>
+            <h2 className={classes.ctaTitle}>Let&apos;s talk about your team</h2>
             <p className={classes.ctaBody}>
-              Tell us the size of the team and what you&apos;ve tried so far. We&apos;ll tell you
-              whether we can help.
+              Tell me how big the team is and what you have already tried, and I&apos;ll tell you
+              whether this is something I can help with.
             </p>
             <div className={classes.ctaActions}>
               <Button component={Link} href="/contact" variant="filled" color="brand" size="lg" radius="md">

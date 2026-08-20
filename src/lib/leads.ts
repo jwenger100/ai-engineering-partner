@@ -2,12 +2,12 @@
  * Lead submission.
  *
  * THE TWO DESTINATIONS ARE INDEPENDENT, ON PURPOSE:
- *   - Web3Forms   — awaited, emails you, and decides what the visitor sees.
- *   - Apps Script — fired in parallel, appends to the Google Sheet.
+ *   - Web3Forms   is awaited, emails you, and decides what the visitor sees.
+ *   - Apps Script is fired in parallel, and appends to the Google Sheet.
  *
  * They used to be sequential, with the sheet write gated behind a successful
  * Web3Forms call. That meant an outage or block at Web3Forms lost the lead from
- * the sheet as well — losing it in both places at once, when the sheet is
+ * the sheet as well, losing it in both places at once, when the sheet is
  * meant to be the durable record. Firing them in parallel means either can
  * fail without taking the other down.
  *
@@ -26,7 +26,7 @@ export interface LeadPayload {
   message?: string;
   riskScore?: string;
   riskAnswers?: Record<string, string>;
-  /** Honeypot — must be empty. Bots fill hidden fields. */
+  /** Honeypot: must be empty. Bots fill hidden fields. */
   botcheck?: string;
 }
 
@@ -34,7 +34,7 @@ export type LeadResult = { ok: true } | { ok: false; error: string };
 
 export async function submitLead(payload: LeadPayload): Promise<LeadResult> {
   if (payload.botcheck) {
-    // Silently succeed for bots — telling them they were caught invites retries.
+    // Silently succeed for bots, since telling them they were caught invites retries.
     return { ok: true };
   }
 
@@ -91,8 +91,8 @@ export async function submitLead(payload: LeadPayload): Promise<LeadResult> {
 function subjectFor(payload: LeadPayload): string {
   const who = payload.name || payload.email;
   return payload.source === "risk-check"
-    ? `Risk check completed — ${who} (${payload.riskScore ?? "no score"})`
-    : `Website enquiry — ${who}`;
+    ? `Risk check completed: ${who} (${payload.riskScore ?? "no score"})`
+    : `Website enquiry: ${who}`;
 }
 
 function flatten(payload: LeadPayload) {

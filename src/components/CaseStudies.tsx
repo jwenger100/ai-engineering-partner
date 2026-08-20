@@ -5,8 +5,8 @@ import classes from "./CaseStudies.module.css";
 /*
  * Renders nothing until real case studies exist. See src/content/caseStudies.ts.
  *
- * An empty or generic "trusted by" band is worse than no section at all — it
- * advertises the absence. So this disappears cleanly instead.
+ * An empty or generic "trusted by" band is worse than no section at all, since
+ * it advertises the absence. So this disappears cleanly instead.
  */
 export function CaseStudies({
   heading = "Two founders, already moved",

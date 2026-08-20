@@ -4,7 +4,7 @@ import { COST_VARIANT } from "@/content/landing";
 
 /*
  * Paid-traffic destination. noindex so it never competes with the homepage in
- * search — it runs the same offer behind a different hook.
+ * search, since it runs the same offer behind a different hook.
  */
 export const metadata: Metadata = {
   title: COST_VARIANT.metaTitle,

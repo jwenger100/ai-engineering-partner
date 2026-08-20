@@ -2,6 +2,7 @@ import Link from "next/link";
 import { FAQAccordion } from "./FAQAccordion";
 import { CaseStudies } from "./CaseStudies";
 import { ScanPanel } from "./ScanPanel";
+import { Credentials } from "./Credentials";
 import { TIERS } from "@/content/pricing";
 import { STEPS, DIFFERENTIATORS, FAQ_ITEMS, type LandingVariant } from "@/content/landing";
 import system from "@/styles/system.module.css";
@@ -11,8 +12,8 @@ import classes from "./LandingPage.module.css";
  * One page engine, three heroes.
  *
  * The homepage and both ad landing pages share everything below the problem
- * section — only the hero and problem copy vary. That keeps message match with
- * each ad without maintaining three separate sites.
+ * section, and only the hero and problem copy vary. That keeps message match
+ * with each ad without maintaining three separate sites.
  */
 export function LandingPage({ variant }: { variant: LandingVariant }) {
   return (
@@ -39,6 +40,7 @@ export function LandingPage({ variant }: { variant: LandingVariant }) {
               </Link>
             </div>
             {variant.supporting && <p className={classes.supporting}>{variant.supporting}</p>}
+            <Credentials />
           </div>
 
           {/* Stands in for a hero image: the finding, drawn to scale. */}
@@ -89,7 +91,7 @@ export function LandingPage({ variant }: { variant: LandingVariant }) {
       </section>
 
       {/* Renders nothing until real case studies exist. */}
-      <CaseStudies intro="Both came to us from an AI builder with a working product and no engineer." />
+      <CaseStudies intro="Both arrived from an AI builder with a working product and nobody to engineer it." />
 
       {/* ── Pricing ──────────────────────────────────── */}
       <section className={`${system.band} ${system.bandSunken}`} id="pricing">
@@ -127,9 +129,9 @@ export function LandingPage({ variant }: { variant: LandingVariant }) {
           </div>
 
           <p className={system.note}>
-            <strong>If we find nothing, you don&apos;t pay.</strong> Some apps are in better shape
-            than their owners fear. If the review turns up nothing worth acting on, we say so and
-            refund the $750.{" "}
+            <strong>If there is nothing to find, you don&apos;t pay.</strong> Some apps are in
+            better shape than their owners fear. When the review turns up nothing worth acting on,
+            I say so and refund the $750.{" "}
             <Link href="/pricing" className={system.link}>
               Full pricing
             </Link>
@@ -141,8 +143,15 @@ export function LandingPage({ variant }: { variant: LandingVariant }) {
       {/* ── Why us ───────────────────────────────────── */}
       <section className={system.band}>
         <div className={system.shell}>
-          <p className={system.eyebrow}>Why us</p>
+          <p className={system.eyebrow}>Why me</p>
           <h2 className={system.h2}>Senior engineering, without the agency overhead.</h2>
+          <p className={system.body}>
+            The work is done by one person, and it is the same person you spoke to on the call.
+            Nobody sells you an engagement and then quietly hands it to a junior, because there is
+            nobody to hand it to. What that buys you is judgement: knowing which of the things I
+            find are worth your money this month, and which can safely wait until you have more
+            users to justify them.
+          </p>
 
           <div className={system.grid}>
             {DIFFERENTIATORS.map((item) => (
@@ -162,8 +171,8 @@ export function LandingPage({ variant }: { variant: LandingVariant }) {
             <p className={system.eyebrow}>Questions</p>
             <h2 className={system.h2}>The ones people actually ask.</h2>
             <p>
-              Something not covered here? Ask on the call — we would rather answer it than have
-              you guess.
+              If something you need to know isn&apos;t covered here, ask on the call. I would far
+              rather answer it than leave you guessing at it.
             </p>
           </div>
           <FAQAccordion items={FAQ_ITEMS} />
@@ -175,8 +184,8 @@ export function LandingPage({ variant }: { variant: LandingVariant }) {
         <div className={system.shell}>
           <h2 className={system.h2}>Find out what you&apos;re actually running.</h2>
           <p className={system.body}>
-            Fifteen minutes with the engineer who&apos;d do the work. If you don&apos;t need us
-            yet, we&apos;ll say so — that happens more often than you&apos;d think.
+            Fifteen minutes with the engineer who would do the work. If you don&apos;t need me
+            yet, I will say so and tell you what to keep an eye on instead.
           </p>
           <div className={system.actions}>
             <Link href="/book" className={`${system.btn} ${system.btnPrimary}`}>

@@ -1,5 +1,5 @@
 /*
- * SITE CONFIG — single source of truth for everything you need to swap in.
+ * SITE CONFIG: single source of truth for everything you need to swap in.
  *
  * Anything marked TODO must be filled in before launch. The site builds and
  * runs with the placeholders, but forms will not deliver and booking will not
@@ -13,7 +13,7 @@ export const site = {
 } as const;
 
 /*
- * SCHEDULING — Cal.com or Calendly. Both are supported; set `provider`.
+ * SCHEDULING: Cal.com or Calendly. Both are supported; set `provider`.
  *
  * ── Cal.com ────────────────────────────────────────────────────────────
  * `link` is the calLink, NOT a full URL: "username/event-slug".
@@ -25,7 +25,7 @@ export const site = {
  * ── Either way, set up the event as ────────────────────────────────────
  *  1. Name: "Free 15-Minute Call". Duration: 15 min.
  *  2. Add these booking questions. They are the qualification filter, and
- *     they are asked AFTER the visitor decides to book — so they cost us
+ *     they are asked AFTER the visitor decides to book, so they cost us
  *     nothing in conversion while still screening the calendar:
  *       - "Which platform did you build on?" (Lovable / Replit / Bolt / v0 / Other)
  *       - "Is your app live with real users?" (Yes / Not yet)
@@ -46,7 +46,7 @@ export const scheduling = {
 } as const;
 
 /*
- * WEB3FORMS — form delivery to email.
+ * WEB3FORMS: form delivery to email.
  *
  * Setup: web3forms.com → enter your email → copy the access key.
  * The key is PUBLIC by design; it only permits sending to the address that
@@ -67,8 +67,9 @@ export const web3forms = {
  * time to a free Apps Script endpoint. See scripts/google-apps-script.js in
  * this repo for the code and deploy instructions.
  *
- * This POST is fire-and-forget and deliberately runs AFTER Web3Forms — if the
- * sheet fails, the lead is still emailed. A lead is never lost to this.
+ * This POST is fire-and-forget and runs in parallel with Web3Forms, not after it.
+ * Either destination can fail without taking the other down, so an outage at
+ * Web3Forms no longer costs you the sheet row as well.
  */
 export const leadSheet = {
   endpoint:
@@ -81,7 +82,7 @@ export const leadSheet = {
 /*
  * ANALYTICS
  *
- * These IDs are public by design — anyone can read them out of the page
+ * These IDs are public by design, since anyone can read them out of the page
  * source, on any site that uses them. They are not secrets, so they live here
  * as literals rather than as repository variables. That means a fresh clone
  * builds with working analytics and there is no setup step to forget.

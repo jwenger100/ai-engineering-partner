@@ -45,7 +45,7 @@ export function SchedulingEmbed({ minHeight = 700 }: { minHeight?: number }) {
       return () => script.remove();
     }
 
-    /* Cal.com — bootstrap the embed queue, then render inline. */
+    /* Cal.com: bootstrap the embed queue, then render inline. */
     const w = window as unknown as { Cal?: CalApi };
 
     if (!w.Cal) {

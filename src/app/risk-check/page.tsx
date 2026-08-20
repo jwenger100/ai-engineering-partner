@@ -6,7 +6,7 @@ import classes from "./page.module.css";
 export const metadata: Metadata = {
   title: "Check your app",
   description:
-    "Five questions, about a minute. Find out which risk signals your AI-built app is showing — no call, no install, no sign-up.",
+    "Five questions and about a minute. See which risk signals your own answers point to in your AI-built app, with nothing to install and no sign-up wall.",
   alternates: { canonical: "/risk-check" },
 };
 
@@ -18,8 +18,8 @@ export default function RiskCheckPage() {
           <span className={classes.eyebrow}>Free · about a minute</span>
           <h1 className={classes.h1}>How safe is your AI-built app?</h1>
           <p className={classes.sub}>
-            Five questions. You get a straight answer at the end — no sign-up wall, no call
-            required, and nothing to install.
+            Five questions, and a straight answer at the end of them. There is nothing to
+            install and no sign-up wall standing between you and the result.
           </p>
         </Container>
       </section>

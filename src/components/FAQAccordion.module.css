@@ -73,7 +73,7 @@
   font-size: 1rem;
   line-height: 1.75;
   color: var(--ink-soft);
-  /* Constrained measure — the old version ran the full 1080px container,
+  /* Constrained measure. The old version ran the full 1080px container,
      which is roughly double a comfortable reading line. */
   max-width: 66ch;
 }

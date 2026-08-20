@@ -9,7 +9,7 @@ import classes from "./page.module.css";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Send a message about your AI-built app. We reply within one business day — or book a free 15-minute call and skip the wait.",
+    "Send a message about your AI-built app and get a reply within one business day. Or book a free 15-minute call and skip the wait entirely.",
   alternates: { canonical: "/contact" },
 };
 
@@ -18,8 +18,8 @@ export default function ContactPage() {
     <>
       <PageHeader
         eyebrow="Contact"
-        title="Tell us what's going on"
-        intro="A sentence or two is plenty. We read everything and reply within one business day."
+        title="Tell me what's going on"
+        intro="A sentence or two is plenty. Everything that arrives here gets read by me, and answered inside one business day."
       />
 
       <section className={classes.section}>

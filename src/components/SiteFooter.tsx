@@ -10,7 +10,7 @@ const footerLinks = [
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
   { label: "Book a call", href: "/book" },
-  // Kept reachable but out of the main nav — see the pivot plan.
+  // Kept reachable but out of the main nav; see the pivot plan.
   { label: "For Engineering Teams", href: "/engineering-teams" },
   { label: "Privacy", href: "/privacy" },
 ];

@@ -4,7 +4,7 @@ import { SECURITY_VARIANT } from "@/content/landing";
 
 /*
  * Paid-traffic destination. noindex so it never competes with the homepage in
- * search — it runs the same offer behind a different hook.
+ * search, since it runs the same offer behind a different hook.
  *
  * Was the design-system pilot; now that the system is global it uses the same
  * shared component as every other landing page.

@@ -32,14 +32,14 @@ export const TIERS: Tier[] = [
     price: "$750",
     priceNote: "Credited in full against any engagement that follows",
     description:
-      "A senior engineer reviews your app and tells you what's true: what you own, what the platform owns, what's exposed, and what it would take to fix. Turnaround is 72 hours.",
+      "I go through your app and tell you where you stand: what you own, what the platform owns, what is exposed, and what it would take to put right. The report is back with you inside 72 hours.",
     bullets: [
-      "Security review — database access rules, exposed keys, auth boundaries",
-      "Ownership inventory — code, repo, hosting, database, domain, secrets",
-      "What's genuinely urgent, and what can wait",
+      "Security review of access rules, exposed keys and auth boundaries",
+      "An ownership inventory covering code, repo, hosting, database, domain and secrets",
+      "What is urgent, and what can safely wait",
       "A recorded walkthrough of your own codebase",
       "A fixed quote for the work, if you want it",
-      "If we find nothing that matters, we say so and refund it",
+      "If there is nothing worth acting on, I say so and refund it",
     ],
     ctaLabel: "Start with the report",
     ctaHref: "/book",
@@ -50,14 +50,14 @@ export const TIERS: Tier[] = [
     price: "$7,500",
     priceNote: "Minus the $750 report. Typically 2–4 weeks.",
     description:
-      "Everything moves onto accounts in your name, the security gaps get closed, and you finish able to keep building on your own. Preserving your app, not rebuilding it.",
+      "Everything moves onto accounts in your name, the security gaps get closed, and you come out the other side able to keep building on your own. Your app is preserved, not rebuilt.",
     bullets: [
       "Infrastructure set up under accounts you own",
       "Your app moved across and verified against an agreed checklist",
       "Database access rules written and tested",
-      "Every key and secret rotated, stored properly",
+      "Every key and secret rotated, then stored properly",
       "GitHub, CI/CD, and separate staging and production environments",
-      "Claude Code set up on your codebase — up to four working sessions",
+      "Claude Code set up on your codebase, with up to four working sessions",
       "A written runbook for your app, in plain language",
       "30 days of support after handover",
     ],
@@ -72,12 +72,12 @@ export const TIERS: Tier[] = [
     price: "$500",
     priceNote: "per month · cancel any time",
     description:
-      "For founders who'd rather not be the only person who understands their infrastructure. Optional, and it starts after handover.",
+      "For founders who would rather not be the only person alive who understands their infrastructure. Entirely optional, and it starts after handover.",
     bullets: [
       "Dependency and security patching",
       "Uptime and error monitoring",
-      "A named engineer who already knows your codebase",
-      "Async support when you're stuck",
+      "An engineer on call who already knows your codebase",
+      "Async support when you get stuck",
       "Quarterly review as you grow",
     ],
     ctaLabel: "Ask about it",
@@ -96,18 +96,18 @@ export const ADD_ONS: AddOn[] = [
     name: "Scale Architecture",
     price: "From $18,000",
     description:
-      "Full AWS path — Terraform, ECS Fargate, VPC and IAM, RDS or Aurora, multi-environment CI/CD, monitoring. Rarely the right call early. We'll tell you honestly if you're not there yet.",
+      "The full AWS path: Terraform, ECS Fargate, VPC and IAM, RDS or Aurora, multi-environment CI/CD and monitoring. It is rarely the right call this early, and I will say so if you are not there yet.",
   },
   {
     name: "Refactoring",
     price: "Scoped per project",
     description:
-      "When the code itself is the problem, not the infrastructure. Quoted from the report, so you know what you're buying before you commit.",
+      "For when the code itself is the problem rather than the infrastructure around it. Quoted from the report, so you know what you are buying before you commit to any of it.",
   },
   {
     name: "Fractional CTO",
     price: "$1,500–3,500/mo",
     description:
-      "Ongoing technical leadership — architecture decisions, hiring, planning. For founders scaling past the point where advice-by-the-hour works.",
+      "Ongoing technical leadership on architecture decisions, hiring and planning. For founders who have scaled past the point where advice by the hour is any use.",
   },
 ];

@@ -9,7 +9,7 @@
 
 .supporting { margin: 1.35rem 0 0; font-size: 0.85rem; color: var(--muted); max-width: 52ch; }
 
-/* ── Problem list — hairline rows, no cards ───────────── */
+/* ── Problem list: hairline rows, no cards ───────────── */
 
 .problemList {
   list-style: none;

@@ -6,7 +6,7 @@
  * Light-ground, one accent, real typography. Replaces the previous scheme of
  * dark navy gradients and Tailwind-default blue, which read as generic.
  *
- * Everything on the site derives from these — no page should introduce a raw
+ * Everything on the site derives from these, and no page should introduce a raw
  * hex value. Changing the accent here changes it everywhere.
  */
 :root {

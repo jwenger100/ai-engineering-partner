@@ -42,11 +42,11 @@ export const metadata: Metadata = {
     template: "%s | AI Engineering Partner",
   },
   description:
-    "You built it with AI. We make it safe to run. Security review, ownership of your code and infrastructure, and the skills to keep building — for apps built on Lovable, Replit and Bolt.",
+    "You built it with AI, and I make it safe to run: security review, ownership of your code and infrastructure, and the skills to keep building on it. For apps built on Lovable, Replit and Bolt.",
   openGraph: {
     title: "AI Engineering Partner",
     description:
-      "You built it with AI. We make it safe to run — for apps built on Lovable, Replit and Bolt.",
+      "You built it with AI. I make it safe to run. For apps built on Lovable, Replit and Bolt.",
     siteName: site.name,
     url: site.url,
     type: "website",
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "AI Engineering Partner",
     description:
-      "You built it with AI. We make it safe to run — for apps built on Lovable, Replit and Bolt.",
+      "You built it with AI. I make it safe to run. For apps built on Lovable, Replit and Bolt.",
   },
   alternates: { canonical: "/" },
   robots: { index: true, follow: true },
