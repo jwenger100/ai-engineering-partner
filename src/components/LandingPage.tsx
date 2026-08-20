@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { FAQAccordion } from "./FAQAccordion";
 import { CaseStudies } from "./CaseStudies";
+import { AccessTrust } from "./AccessTrust";
 import { ScanPanel } from "./ScanPanel";
 import { Credentials } from "./Credentials";
 import { TIERS } from "@/content/pricing";
@@ -92,6 +93,8 @@ export function LandingPage({ variant }: { variant: LandingVariant }) {
 
       {/* Renders nothing until real case studies exist. */}
       <CaseStudies intro="Both arrived from an AI builder with a working product and nobody to engineer it." />
+
+      <AccessTrust />
 
       {/* ── Pricing ──────────────────────────────────── */}
       <section className={`${system.band} ${system.bandSunken}`} id="pricing">

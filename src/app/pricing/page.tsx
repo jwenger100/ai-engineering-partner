@@ -23,7 +23,7 @@ export default function PricingPage() {
       <PageHeader
         eyebrow="Pricing"
         title="Start small. Decide after."
-        intro="Fixed scope and a fixed price, both agreed before anything begins. Start with the review, which comes off the cost of the work if you go ahead. Every engagement on this page is run by one person: twenty years an engineer, principal level, Microsoft among the places I&apos;ve built."
+        intro="Fixed scope and a fixed price, both agreed before anything begins. Start with the review, which comes off the cost of the work if you go ahead. Every engagement on this page is run by one person: a principal engineer with twenty years in the industry, including several at Microsoft."
       />
 
       <section className={classes.section}>

@@ -98,7 +98,7 @@ export const HOME_VARIANT: LandingVariant = {
   subhead:
     "I close the security gaps, move everything onto accounts with your name on them, and leave you able to keep building on it. No rebuild required.",
   supporting:
-    "I'm Jonathan Wenger. Twenty years an engineer, principal level, Microsoft among the places I've built. Keeping software upright under real users is the unglamorous half of the job, and it's the half your app has never had.",
+    "I'm Jonathan Wenger, a principal engineer with twenty years in the industry, including several at Microsoft. Keeping software standing up under real users is the unglamorous half of the job, and it's the half your app has never had.",
   primaryCta: { label: "Check my app", href: "/risk-check" },
   secondaryCta: { label: "Book a free call", href: "/book" },
   problem: {
@@ -183,6 +183,11 @@ export const FAQ_ITEMS = [
     question: "Why does this cost $7,500 when I've seen migrations for $600?",
     answer:
       "Because it isn't the same job. A $600 migration copies your database from one host to another, which is a well-defined task and a fair price for it. This engagement also writes the access rules nobody ever wrote, rotates secrets that may already be in somebody else's hands, and spends real hours teaching you to run the result. If a straight database move is all you need, I'll say so on the call and point you at someone cheaper.",
+  },
+  {
+    question: "Why would I pay $500 a month after you have handed everything over?",
+    answer:
+      "You might not need to, and I would rather you skipped it than resented it. If you are comfortable applying your own dependency updates, watching your own error rates, and being the person who gets up when something breaks at 2am, the engagement stands on its own without it. What the retainer buys is that I stay current on your codebase: security patches applied as they land rather than whenever you next look, monitoring that tells me before it tells your customers, and someone who does not need a week to remember how your app fits together. The founders who take it are usually the ones who do not want to be the only person alive who understands their own infrastructure. It starts after handover, and you can stop at the end of any month.",
   },
   {
     question: "What if you find something serious?",
