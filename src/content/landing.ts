@@ -98,7 +98,7 @@ export const HOME_VARIANT: LandingVariant = {
   subhead:
     "I close the security gaps, move everything onto accounts with your name on them, and leave you able to keep building on it. No rebuild required.",
   supporting:
-    "I'm Jonathan Wenger, a principal engineer with twenty years in the industry, including several at Microsoft. Keeping software standing up under real users is the unglamorous half of the job, and it's the half your app has never had.",
+    "I'm Jonathan Wenger, a principal engineer with twenty years in the industry, including time at Microsoft. Keeping software standing up under real users is the unglamorous half of the job, and it's the half your app has never had.",
   primaryCta: { label: "Check my app", href: "/risk-check" },
   secondaryCta: { label: "Book a free call", href: "/book" },
   problem: {

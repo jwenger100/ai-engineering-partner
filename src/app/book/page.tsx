@@ -8,7 +8,7 @@ import classes from "./page.module.css";
 export const metadata: Metadata = {
   title: "Book a call",
   description:
-    "Fifteen minutes with the engineer who would do the work: a straight read on your AI-built app and what your options are. A principal engineer with twenty years in the industry, including several at Microsoft.",
+    "Fifteen minutes with the engineer who would do the work: a straight read on your AI-built app and what your options are. A principal engineer with twenty years in the industry, including time at Microsoft.",
   alternates: { canonical: "/book" },
 };
 
@@ -37,7 +37,7 @@ export default function BookPage() {
       <PageHeader
         eyebrow="Free · 15 minutes"
         title="Talk to the engineer, not a salesperson"
-        intro="Pick a time below and you get me: Jonathan Wenger, a principal engineer with twenty years in the industry, including several at Microsoft. I take the calls and I do the work, so nothing gets lost in the handover."
+        intro="Pick a time below and you get me: Jonathan Wenger, a principal engineer with twenty years in the industry, including time at Microsoft. I take the calls and I do the work, so nothing gets lost in the handover."
       />
 
       <section className={classes.calendarSection}>
